@@ -52,8 +52,7 @@ public class State {
     }
 
     public void swap() {
-        double[][] swapGate = {{1, 0, 0, 0}, {0, 0, 1, 0}, {0, 1, 0, 0}, {0, 0, 0, 1}};
-        this.state = Matrix.transform(swapGate, this.getState());
+        this.state = Matrix.transform(S, this.getState());
     }
 
     public void cNot() {
@@ -81,4 +80,5 @@ public class State {
     
     public final double[][] H = { {1/Math.sqrt(2),1/Math.sqrt(2)}, {1/Math.sqrt(2),-1/Math.sqrt(2)} };
     public final double[][] I = { {1,0}, {0,1} };
+    public final double[][] S = {{1, 0, 0, 0}, {0, 0, 1, 0}, {0, 1, 0, 0}, {0, 0, 0, 1}};
 }
