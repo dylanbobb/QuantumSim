@@ -48,6 +48,9 @@ public class State {
     }
 
     public void swap(int a, int b) {
+        if (a > nbQubits || b > nbQubits)
+            return;
+        
         int source = a < b ? a : b;
         int dest = a < b ? b : a;
 
@@ -62,7 +65,7 @@ public class State {
             for (int j = i+source+1; j < nbQubits - 1; j++) {
                 transformations[i] = Matrix.tensorMatrix(transformations[i], I);
             }
-            
+            System.out.println(Arrays.deepToString(transformations[i]));
             state = Matrix.transform(transformations[i], state);
         }
         
