@@ -1,6 +1,7 @@
 package mcgillphys19;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class State {
 
@@ -58,6 +59,24 @@ public class State {
     public void cNot() {
         double[][] cNot = {{1, 0, 0, 0}, {0, 1, 0, 0}, {0, 0, 0, 1}, {0, 0, 1, 0}};
         this.state = Matrix.transform(cNot, this.getState());
+    }
+    
+    public void collapse(Random rand) {
+        double result = rand.nextDouble();
+        
+        double[] newState = new double[state.length];
+        
+        double currState = 0;
+        
+        for (int i = 0; i < state.length; i++) {
+            currState += state[i] * state[i];
+            
+            if (result <= currState) {
+                state[i] = 1;
+                state = newState;
+                return;
+            }
+        }
     }
     
     public final double[][] H = { {1/Math.sqrt(2),1/Math.sqrt(2)}, {1/Math.sqrt(2),-1/Math.sqrt(2)} };
