@@ -6,6 +6,7 @@
 package mcgillphys19;
 
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,10 +30,7 @@ public class FXMLDocumentController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // 
-        double[][] q1s = {{0},{1}};
-        System.out.println(q1s[1]);
-//        Qubit q1 = new Qubit({1},{0});
+        double[] state = {1,0};
     }    
     
 }
