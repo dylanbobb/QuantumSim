@@ -72,7 +72,7 @@ public class State {
             currState += state[i] * state[i];
             
             if (result <= currState) {
-                state[i] = 1;
+                newState[i] = 1;
                 state = newState;
                 return;
             }
