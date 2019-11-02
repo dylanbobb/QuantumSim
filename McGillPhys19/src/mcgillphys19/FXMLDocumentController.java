@@ -30,7 +30,7 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        double[] s1s = {0,0,1,0};
+        double[] s1s = {1/Math.sqrt(2),0, 0,1/Math.sqrt(2)};
         State s1 = new State(s1s);
 //        s1.cNot();
 //        System.out.println(Arrays.toString(s1.getState()));
@@ -39,7 +39,7 @@ public class FXMLDocumentController implements Initializable {
 //        double [][] a = {{1,0},{0,1}};
 //        
 //        System.out.println(Arrays.deepToString(Matrix.tensorMatrix(a, b)));
-        int[] selection = {0};
+        int[] selection = {0,1};
         s1.h(selection);
         System.out.println(Arrays.toString(s1.getState()));
     }
