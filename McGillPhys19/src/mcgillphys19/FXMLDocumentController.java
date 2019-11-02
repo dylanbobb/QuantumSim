@@ -7,6 +7,7 @@ package mcgillphys19;
 
 import java.net.URL;
 import java.util.Arrays;
+import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,6 +20,7 @@ import javafx.scene.control.Label;
  */
 public class FXMLDocumentController implements Initializable {
 
+    Random rand = new Random();
     @FXML
     private Label label;
 
@@ -32,16 +34,7 @@ public class FXMLDocumentController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         double[] s1s = {1/Math.sqrt(2),0, 0,1/Math.sqrt(2)};
         State s1 = new State(s1s);
-//        s1.cNot();
-//        System.out.println(Arrays.toString(s1.getState()));
-//        
-//        double[][] b = {{1,2},{3,4}};
-//        double [][] a = {{1,0},{0,1}};
-//        
-//        System.out.println(Arrays.deepToString(Matrix.tensorMatrix(a, b)));
-        int[] selection = {0};
-        s1.h(selection);
-        s1.h(selection);
+        s1.collapse(rand);
         System.out.println(Arrays.toString(s1.getState()));
     }
 }
