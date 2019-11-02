@@ -13,6 +13,11 @@ public class State
 //        this.qbits = {new QBit({1,0}), new QBit({1,0})};
     }
     
+    public State(double[] state)
+    {
+        this.state = state;
+    }
+    
     public State(QBit[] qbits)
     {
         this.qbits = qbits;
