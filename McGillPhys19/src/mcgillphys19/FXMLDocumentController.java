@@ -39,7 +39,8 @@ public class FXMLDocumentController implements Initializable {
 //        double [][] a = {{1,0},{0,1}};
 //        
 //        System.out.println(Arrays.deepToString(Matrix.tensorMatrix(a, b)));
-        int[] selection = {0,1};
+        int[] selection = {0};
+        s1.h(selection);
         s1.h(selection);
         System.out.println(Arrays.toString(s1.getState()));
     }
