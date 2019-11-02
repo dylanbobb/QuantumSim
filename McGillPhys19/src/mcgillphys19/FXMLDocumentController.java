@@ -30,5 +30,9 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        double[] s1s = {0,0,1,0};
+        State s1 = new State(s1s);
+        s1.cNot();
+        System.out.println(Arrays.toString(s1.getState()));
     }
 }
