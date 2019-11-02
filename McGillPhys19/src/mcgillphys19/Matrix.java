@@ -53,4 +53,26 @@ public class Matrix {
 
         return C;
     }
+    
+    public static double [] tensorVectors(double [] a, double [] b) {
+        return null;
+    }
+    
+    public static double [][] tensorMatrix(double [][] a, double [][] b) {
+        int aRows = a.length;
+        int bColumns = b[0].length;
+        int bRows = b.length;
+        int aColumns = a[0].length;
+        
+        int cColumns = aColumns * bColumns;
+        double[][] C = new double[aRows * bRows][cColumns];
+        
+        for (int i = 0; i < C.length; i ++) {
+            for (int j = 0; j < cColumns; j++) {
+                C[i][j] = a[i / bRows][j / bColumns] * b[i % bRows][j % bColumns];
+            }
+        }
+        
+        return C;
+    }
 }

@@ -34,5 +34,10 @@ public class FXMLDocumentController implements Initializable {
         State s1 = new State(s1s);
         s1.cNot();
         System.out.println(Arrays.toString(s1.getState()));
+        
+        double[][] b = {{1,2},{3,4}};
+        double [][] a = {{1,0},{0,1}};
+        
+        System.out.println(Arrays.deepToString(Matrix.tensorMatrix(a, b)));
     }
 }
