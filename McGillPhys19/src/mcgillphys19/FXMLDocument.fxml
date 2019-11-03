@@ -147,6 +147,7 @@
                         <Label fx:id="stateVectorMessage" layoutX="186.0" layoutY="23.0" wrapText="true" />
                         <Button fx:id="clear" layoutX="374.0" layoutY="329.0" mnemonicParsing="false" onAction="#handleClearAction" prefHeight="25.0" prefWidth="83.0" text="Clear" />
                         <Label fx:id="lblVector" layoutX="186.0" layoutY="14.0" prefHeight="342.0" prefWidth="115.0" textFill="WHITE" />
+                        <Button fx:id="step" layoutX="479.0" layoutY="328.0" mnemonicParsing="false" onAction="#stepButton" prefHeight="26.0" prefWidth="83.0" text="Step" />
                      </children>
                   </AnchorPane>
                </content>

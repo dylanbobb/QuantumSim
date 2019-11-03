@@ -177,6 +177,8 @@ public class FXMLDocumentController implements Initializable {
     private Rectangle swap;
     @FXML
     private Rectangle cnot;
+    
+    private int currCol = 0;
 
     // Outputs
     @FXML
@@ -187,6 +189,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     public void handleClearAction(ActionEvent event) {
+        currCol = 0;
         line1_ops = new ArrayList(3);
         line2_ops = new ArrayList(3);
         line3_ops = new ArrayList(3);
@@ -246,6 +249,117 @@ public class FXMLDocumentController implements Initializable {
         System.out.println(id + " : " + Arrays.toString(driver.getState()));
         dutchAnswer.setText(Arrays.toString(driver.getState()));
     }
+    
+    @FXML
+    private void stepButton(ActionEvent event)
+    {
+        System.out.println(currCol);
+        if (currCol == 0) {
+            // Calculate the size of the arrows for the circles
+            String[] q1s = input1.getText().split(",");
+            String[] q2s = input2.getText().split(",");
+            String[] q3s = input3.getText().split(",");
+            String[] q4s = input4.getText().split(",");
+            double[] q1 = new double[q1s.length];
+            double[] q2 = new double[q2s.length];
+            double[] q3 = new double[q3s.length];
+            double[] q4 = new double[q4s.length];
+            for (int i = 0; i < q1s.length; i++) {
+                q1[i] = Math.sqrt(Double.parseDouble(q1s[i]) / 100);
+                q2[i] = Math.sqrt(Double.parseDouble(q2s[i]) / 100);
+                q3[i] = Math.sqrt(Double.parseDouble(q3s[i]) / 100);
+                q4[i] = Math.sqrt(Double.parseDouble(q4s[i]) / 100);
+            }
+            double[] stateVector = Matrix.tensorVectors(q1, q2);
+            stateVector = Matrix.tensorVectors(stateVector, q3);
+            stateVector = Matrix.tensorVectors(stateVector, q4);
+            state = new State(stateVector);
+            
+        }
+        else if (currCol == 3){
+            handleRunAction(event);
+            currCol = 3;
+        }
+        if (currCol != 3) {
+        // Reading which funtion is which
+        if (line1_ops.size() == 0) {
+            line1_ops.add("i");
+            line1_ops.add("i");
+            line1_ops.add("i");
+        }
+        if (line2_ops.size() == 0) {
+            line2_ops.add("i");
+            line2_ops.add("i");
+            line2_ops.add("i");
+        }
+        if (line3_ops.size() == 0) {
+            line3_ops.add("i");
+            line3_ops.add("i");
+            line3_ops.add("i");
+        }
+        if (line4_ops.size() == 0) {
+            line4_ops.add("i");
+            line4_ops.add("i");
+            line4_ops.add("i");
+        }
+
+        if (line1_ops.get(currCol).equalsIgnoreCase("h")) {
+            int[] selection = {0};
+            state.h(selection);
+        }
+        if (line2_ops.get(currCol).equalsIgnoreCase("h")) {
+            int[] selection = {1};
+            state.h(selection);
+        }
+        if (line3_ops.get(currCol).equalsIgnoreCase("h")) {
+            int[] selection = {2};
+            state.h(selection);
+        }
+        if (line4_ops.get(currCol).equalsIgnoreCase("h")) {
+            int[] selection = {3};
+            state.h(selection);
+        }
+        if (line1_ops.get(currCol).equalsIgnoreCase("cnot")) {
+            state.cNot(0, 1);
+        }
+        if (line2_ops.get(currCol).equalsIgnoreCase("cnot")) {
+            state.cNot(1, 2);
+        }
+        if (line3_ops.get(currCol).equalsIgnoreCase("cnot")) {
+            state.cNot(2, 3);
+        }
+        if (line1_ops.get(currCol).equalsIgnoreCase("swap")) {
+            state.swap(0, 1);
+        }
+        if (line2_ops.get(currCol).equalsIgnoreCase("swap")) {
+            state.swap(1, 2);
+        }
+        if (line3_ops.get(currCol).equalsIgnoreCase("swap")) {
+            state.swap(2, 3);
+        }
+        if (line1_ops.get(currCol).equalsIgnoreCase("m")) {
+            state.collapse(rand, 0);
+        }
+        if (line2_ops.get(currCol).equalsIgnoreCase("m")) {
+            state.collapse(rand, 1);
+        }
+        if (line3_ops.get(currCol).equalsIgnoreCase("m")) {
+            state.collapse(rand, 2);
+        }
+        if (line4_ops.get(currCol).equalsIgnoreCase("m")) {
+            state.collapse(rand, 3);
+        }
+        }
+        
+        currCol = (currCol + 1) % 4;
+        
+        double[] end = state.getState().clone();
+        for (int i = 0; i < end.length; i++) {
+            end[i] = 100.0 * end[i] * end[i];
+        }
+        lblVector.setText(String.format(formatStr, end[0], end[1], end[2], end[3], end[4], end[5], end[6], end[7], end[8], end[9], end[10], end[11], end[12], end[13], end[14], end[15]));
+
+    }
 
     @FXML
     private void constantZero(ActionEvent event) {
@@ -292,6 +406,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void handleRunAction(ActionEvent event) {
         // Calculate the size of the arrows for the circles
+        currCol = 0;
         String[] q1s = input1.getText().split(",");
         String[] q2s = input2.getText().split(",");
         String[] q3s = input3.getText().split(",");
