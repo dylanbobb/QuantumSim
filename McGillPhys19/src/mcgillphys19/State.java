@@ -10,6 +10,7 @@ public class State {
 
     public State(int nbQubits) {
         this.state = new double[(int) Math.pow(2, nbQubits)];
+        this.state[0] = 1;
         this.nbQubits = nbQubits;
     }
 
@@ -46,7 +47,7 @@ public class State {
         this.state = Matrix.transform(operationChain, this.getState());
     }
     
-    public void x(int[] selection) { //TODO
+    public void x(int[] selection) {
         int currSelectionIndex = 0;
         int selectionLen = selection.length;
         double[][] operationChain = null;
@@ -192,6 +193,46 @@ public class State {
         double k = 1.0 / Math.pow(totalProb, 0.5);
         state = Matrix.scalarVector(k, state);
     }
+    
+    public int f0(int a, int N) {
+        return 1;
+    }
+    
+    public int nextF(int a, int N, int prev) {
+        int returnVal = (prev * a) % N;
+        return returnVal;
+    }
+    
+    public void qF(int a, int N, int q) {
+        double[][] transformation = new double[state.length][state.length];
+        int Q = (int) Math.pow(2, q);
+        int offset = (int) Math.pow(2, q / 2.0);
+        
+        /*for (int i = 0; i < state.length; i++) {
+            transformation[i][i] = 1;
+        }*/
+        
+        int i = 0;
+        int prevF = f0(a, N);
+        int sourceIdx = i * offset;
+        int destIdx = sourceIdx + prevF;
+        double temp = state[sourceIdx];
+        state[sourceIdx] = state[destIdx];
+        state[destIdx] = temp;
+        //transformation[sourceIdx][destIdx] = 1;
+        //transformation[destIdx][sourceIdx] = 1;
+        for (i = 1; i < Q; i++) {
+            prevF = nextF(a, N, prevF);
+            sourceIdx = i * offset;
+            destIdx = sourceIdx + prevF;
+            temp = state[sourceIdx];
+            state[sourceIdx] = state[destIdx];
+            state[destIdx] = temp;
+            //transformation[sourceIdx][destIdx] = 1;
+            //transformation[destIdx][sourceIdx] = 1;
+        }
+        //state = Matrix.transform(transformation, state);
+    }
 
     public final double[][] H = {{1 / Math.sqrt(2), 1 / Math.sqrt(2)}, {1 / Math.sqrt(2), -1 / Math.sqrt(2)}};
     public final double[][] I = {{1, 0}, {0, 1}};
@@ -201,4 +242,14 @@ public class State {
     public final double[][] M0 = {{1, 0}, {0, 0}};
     public final double[][] M1 = {{0, 0}, {0, 1}};
     //public final double[][] CNOT = {{1, 0, 0, 0}, {0, 1, 0, 0}, {0, 0, 0, 1}, {0, 0, 1, 0}};
+
+    @Override
+    public String toString() {
+        String printStr = "";
+        for (int i = 0; i < state.length; i++) {
+            printStr += "\n" + i + " : " + state[i];
+        }
+        
+        return printStr;
+    }
 }
