@@ -26,16 +26,41 @@ public class State {
         int currSelectionIndex = 0;
         int selectionLen = selection.length;
         double[][] operationChain = null;
+        
         if (selection[currSelectionIndex] == 0) {
             operationChain = H;
             currSelectionIndex++;
         } else {
             operationChain = I;
         }
-        System.out.println(Arrays.deepToString(operationChain));
+        
         for (int i = 1; i < nbQubits; i++) {
             if (currSelectionIndex < selectionLen && selection[currSelectionIndex] == i) {
                 operationChain = Matrix.tensorMatrix(operationChain, H);
+                currSelectionIndex++;
+            } else {
+                operationChain = Matrix.tensorMatrix(operationChain, I);
+            }
+        }
+
+        this.state = Matrix.transform(operationChain, this.getState());
+    }
+    
+    public void x(int[] selection) { //TODO
+        int currSelectionIndex = 0;
+        int selectionLen = selection.length;
+        double[][] operationChain = null;
+        
+        if (selection[currSelectionIndex] == 0) {
+            operationChain = X;
+            currSelectionIndex++;
+        } else {
+            operationChain = I;
+        }
+        
+        for (int i = 1; i < nbQubits; i++) {
+            if (currSelectionIndex < selectionLen && selection[currSelectionIndex] == i) {
+                operationChain = Matrix.tensorMatrix(operationChain, X);
                 currSelectionIndex++;
             } else {
                 operationChain = Matrix.tensorMatrix(operationChain, I);
@@ -108,9 +133,33 @@ public class State {
             }
         }
     }
+    
+    public void U(int id) {
+        /*
+        ID
+        0: Constant 0
+        1: Constant 1
+        2: Identity
+        3: NOT gate
+        */
+        
+        if (id == 0) {
+            return;
+        } else if (id == 1) {
+            int[] selection = {0};
+            x(selection);
+        } else if (id == 2) {
+            cNot(1, 0);
+        } else {
+            cNot(1, 0);
+            int[] selection = {0};
+            x(selection);
+        }
+    }
 
     public final double[][] H = {{1 / Math.sqrt(2), 1 / Math.sqrt(2)}, {1 / Math.sqrt(2), -1 / Math.sqrt(2)}};
     public final double[][] I = {{1, 0}, {0, 1}};
     public final double[][] S = {{1, 0, 0, 0}, {0, 0, 1, 0}, {0, 1, 0, 0}, {0, 0, 0, 1}};
+    public final double[][] X = {{0, 1}, {1, 0}};
     //public final double[][] CNOT = {{1, 0, 0, 0}, {0, 1, 0, 0}, {0, 0, 0, 1}, {0, 0, 1, 0}};
 }
