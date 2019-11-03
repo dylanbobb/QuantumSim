@@ -41,7 +41,8 @@ public class FXMLDocumentController implements Initializable {
     // Class Variables
     private Random rand = new Random();
     private State state;
-    boolean is_cnot_or_swap = false;
+    boolean is_cnot = false;
+    boolean is_swap = false;
     private String current_op;
     private ArrayList<String> line1_ops = new ArrayList(3);
     private ArrayList<String> line2_ops = new ArrayList(3);
@@ -117,7 +118,13 @@ public class FXMLDocumentController implements Initializable {
     private Label operationsLabel;
     @FXML
     private Label stateVectorMessage;
-
+    
+    @FXML
+    private TabPane tabPane;
+    @FXML
+    private Tab simulationTab;
+    @FXML
+    private Tab deutschTab;
     @FXML
     private AnchorPane pane;
     @FXML
@@ -358,6 +365,8 @@ public class FXMLDocumentController implements Initializable {
                 content.putImage(hadamard_image);
 
                 db.setContent(content);
+                is_cnot=false;
+                is_swap=false;
                 current_op = "h";
                 line4Operation1.setDisable(false);
                 line4Operation2.setDisable(false);
@@ -375,6 +384,7 @@ public class FXMLDocumentController implements Initializable {
                 content.putImage(cnot_image);
 
                 db.setContent(content);
+                is_cnot = true;
                 line4Operation1.setDisable(true);
                 line4Operation2.setDisable(true);
                 line4Operation3.setDisable(true);
@@ -392,6 +402,7 @@ public class FXMLDocumentController implements Initializable {
                 content.putImage(swap_image);
 
                 db.setContent(content);
+                is_swap=true;
                 line4Operation1.setDisable(true);
                 line4Operation2.setDisable(true);
                 line4Operation3.setDisable(true);
@@ -409,6 +420,8 @@ public class FXMLDocumentController implements Initializable {
                 content.putImage(measurer_image);
 
                 db.setContent(content);
+                is_cnot = false;
+                is_swap = false;
                 current_op = "m";
                 line4Operation1.setDisable(false);
                 line4Operation2.setDisable(false);
@@ -564,6 +577,10 @@ public class FXMLDocumentController implements Initializable {
                 }
                 if (db.hasImage()) {
                     line1Operation1.setFill(new ImagePattern(db.getImage()));
+                    if(is_cnot || is_swap){
+                        line2Operation1.setFill(Paint.valueOf("BLUE"));
+                        line2Operation1.setOpacity(1);
+                    }
                     line1Operation1.setOpacity(1);
 
                     line1_ops.add(0, current_op);
@@ -587,6 +604,10 @@ public class FXMLDocumentController implements Initializable {
                 }
                 if (db.hasImage()) {
                     line1Operation2.setFill(new ImagePattern(db.getImage()));
+                    if(is_cnot || is_swap){
+                        line2Operation2.setFill(Paint.valueOf("BLUE"));
+                        line2Operation2.setOpacity(1);
+                    }
                     line1Operation2.setOpacity(1);
 
                     line1_ops.add(1, current_op);
@@ -610,6 +631,10 @@ public class FXMLDocumentController implements Initializable {
                 }
                 if (db.hasImage()) {
                     line1Operation3.setFill(new ImagePattern(db.getImage()));
+                    if(is_cnot || is_swap){
+                        line2Operation3.setFill(Paint.valueOf("BLUE"));
+                        line2Operation3.setOpacity(1);
+                    }
                     line1Operation3.setOpacity(1);
 
                     line1_ops.add(2, current_op);
@@ -633,6 +658,10 @@ public class FXMLDocumentController implements Initializable {
                 }
                 if (db.hasImage()) {
                     line2Operation1.setFill(new ImagePattern(db.getImage()));
+                    if(is_cnot || is_swap){
+                        line3Operation1.setFill(Paint.valueOf("BLUE"));
+                        line3Operation1.setOpacity(1);
+                    }
                     line2Operation1.setOpacity(1);
 
                     line2_ops.add(0, current_op);
@@ -656,6 +685,10 @@ public class FXMLDocumentController implements Initializable {
                 }
                 if (db.hasImage()) {
                     line2Operation2.setFill(new ImagePattern(db.getImage()));
+                    if(is_cnot || is_swap){
+                        line3Operation2.setFill(Paint.valueOf("BLUE"));
+                        line3Operation2.setOpacity(1);
+                    }
                     line2Operation2.setOpacity(1);
 
                     line2_ops.add(1, current_op);
@@ -679,6 +712,10 @@ public class FXMLDocumentController implements Initializable {
                 }
                 if (db.hasImage()) {
                     line2Operation3.setFill(new ImagePattern(db.getImage()));
+                    if(is_cnot || is_swap){
+                        line3Operation3.setFill(Paint.valueOf("BLUE"));
+                        line3Operation3.setOpacity(1);
+                    }
                     line2Operation3.setOpacity(1);
 
                     line2_ops.add(2, current_op);
@@ -702,6 +739,10 @@ public class FXMLDocumentController implements Initializable {
                 }
                 if (db.hasImage()) {
                     line3Operation1.setFill(new ImagePattern(db.getImage()));
+                    if(is_cnot || is_swap){
+                        line4Operation1.setFill(Paint.valueOf("BLUE"));
+                        line4Operation1.setOpacity(1);
+                    }
                     line3Operation1.setOpacity(1);
 
                     line3_ops.add(0, current_op);
@@ -725,6 +766,10 @@ public class FXMLDocumentController implements Initializable {
                 }
                 if (db.hasImage()) {
                     line3Operation2.setFill(new ImagePattern(db.getImage()));
+                    if(is_cnot || is_swap){
+                        line4Operation2.setFill(Paint.valueOf("BLUE"));
+                        line4Operation2.setOpacity(1);
+                    }
                     line3Operation2.setOpacity(1);
 
                     line3_ops.add(1, current_op);
@@ -748,6 +793,10 @@ public class FXMLDocumentController implements Initializable {
                 }
                 if (db.hasImage()) {
                     line3Operation3.setFill(new ImagePattern(db.getImage()));
+                    if(is_cnot || is_swap){
+                        line4Operation3.setFill(Paint.valueOf("BLUE"));
+                        line4Operation3.setOpacity(1);
+                    }
                     line3Operation3.setOpacity(1);
 
                     line3_ops.add(2, current_op);
