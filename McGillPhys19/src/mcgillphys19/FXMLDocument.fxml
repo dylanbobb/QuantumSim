@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="700.0" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mcgillphys19.FXMLDocumentController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="700.0" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mcgillphys19.FXMLDocumentController">
    <children>
       <TabPane fx:id="tabPane" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
@@ -27,7 +27,7 @@
                         <Button fx:id="run" layoutX="583.0" layoutY="329.0" onAction="#handleRunAction" prefHeight="25.0" prefWidth="83.0" text="Run" textAlignment="CENTER" />
                         <VBox layoutX="24.0" layoutY="4.0" prefHeight="307.0" prefWidth="92.0" spacing="10.0">
                            <children>
-                              <Label fx:id="inputMessage" minHeight="16" minWidth="69" prefHeight="98.0" prefWidth="92.0" stylesheets="@../../stylesheets/label.css" text="Enter qubit states." textOverrun="CLIP" wrapText="true" />
+                              <Label fx:id="inputMessage" minHeight="16" minWidth="69" prefHeight="98.0" prefWidth="92.0" text="Enter qubit states." textOverrun="CLIP" wrapText="true" />
                               <Label fx:id="quBit1InputLabel" text="Q1:" />
                               <TextField fx:id="input1" promptText="(ex: 30,70) " />
                               <Label fx:id="quBit2InputLabel" layoutX="10.0" layoutY="43.0" text="Q2:" />
@@ -146,6 +146,7 @@
                         </GridPane>
                         <Label fx:id="stateVectorMessage" layoutX="186.0" layoutY="23.0" wrapText="true" />
                         <Button fx:id="clear" layoutX="374.0" layoutY="329.0" mnemonicParsing="false" onAction="#handleClearAction" prefHeight="25.0" prefWidth="83.0" text="Clear" />
+                        <Label fx:id="lblVector" layoutX="186.0" layoutY="14.0" prefHeight="342.0" prefWidth="115.0" textFill="WHITE" />
                      </children>
                   </AnchorPane>
                </content>

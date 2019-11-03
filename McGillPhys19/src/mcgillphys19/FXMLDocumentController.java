@@ -38,6 +38,23 @@ import javafx.scene.shape.Rectangle;
  */
 public class FXMLDocumentController implements Initializable {
 
+    private String formatStr = "|0000> : %2.2f\n"
+            + "|0001> : %2.2f\n"
+            + "|0010> : %2.2f\n"
+            + "|0011> : %2.2f\n"
+            + "|0100> : %2.2f\n"
+            + "|0101> : %2.2f\n"
+            + "|0110> : %2.2f\n"
+            + "|0111> : %2.2f\n"
+            + "|1000> : %2.2f\n"
+            + "|1001> : %2.2f\n"
+            + "|1010> : %2.2f\n"
+            + "|1011> : %2.2f\n"
+            + "|1100> : %2.2f\n"
+            + "|1101> : %2.2f\n"
+            + "|1110> : %2.2f\n"
+            + "|1111> : %2.2f\n";
+
     // Class Variables
     private Random rand = new Random();
     private State state;
@@ -118,10 +135,13 @@ public class FXMLDocumentController implements Initializable {
     private Label operationsLabel;
     @FXML
     private Label stateVectorMessage;
-    
+
+    @FXML
+    private Label lblVector;
+
     @FXML
     private Label dutchLabel;
-    
+
     @FXML
     private Label dutchAnswer;
 
@@ -354,6 +374,12 @@ public class FXMLDocumentController implements Initializable {
 
         System.out.println(Arrays.toString(state.getState()));
 
+        double[] end = state.getState().clone();
+        for (int i = 0; i < end.length; i++) {
+            end[i] = 100.0 * end[i] * end[i];
+        }
+        lblVector.setText(String.format(formatStr, end[0], end[1], end[2], end[3], end[4], end[5], end[6], end[7], end[8], end[9], end[10], end[11], end[12], end[13], end[14], end[15]));
+
         state.collapse(rand);
         System.out.println(Arrays.toString(state.getState()));
         qbit1.setFill(Paint.valueOf("dodgerblue"));
@@ -401,7 +427,7 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         // Styles
         inputMessage.getStyleClass().add("label_style");
         outputMessage.getStyleClass().add("label_style");
@@ -426,7 +452,7 @@ public class FXMLDocumentController implements Initializable {
         run.getStyleClass().add("button_style");
         clear.getStyleClass().add("button_style");
         pane.getStyleClass().add("pane");
-        
+
         // Images
         Image hadamard_image = new Image(fileURL("./assets/hadamard_image.jpg"));
         Image swap_image = new Image(fileURL("./assets/swap_image.jpg"));
