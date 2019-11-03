@@ -12,8 +12,12 @@ public class ShorDriver {
         Random rand = new Random();
         
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter a product of 2 primes smaller than 32 : N = ");
-        int N = scanner.nextInt();
+        int N = 33;
+        
+        while (N > 36 || N < 0) {
+            System.out.print("Enter a product of 2 primes smaller than 32 : N = ");
+            N = scanner.nextInt();
+        }
         
         int q = (int) Math.ceil(2 * Math.log(N) / Math.log(2));
         int qPrime = (int) Math.ceil(q / 2.0);
