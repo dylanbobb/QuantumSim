@@ -88,7 +88,6 @@ public class State {
             for (int j = i+source+1; j < nbQubits - 1; j++) {
                 transformations[i] = Matrix.tensorMatrix(transformations[i], I);
             }
-            System.out.println(Arrays.deepToString(transformations[i]));
             state = Matrix.transform(transformations[i], state);
         }
         
@@ -159,10 +158,47 @@ public class State {
             x(selection);
         }
     }
+    
+    public void collapse(Random rand, int index) {
+        double result = rand.nextDouble();
+        double totalProb = 0;
+        int powA = (int) Math.pow(2, nbQubits - 1 - index);
+        
+        for (int i = 0; i < state.length; i++) {
+            if (((i / powA) % 2 == 1)) {
+                totalProb += state[i] * state[i];
+            }
+        }
+        
+        double [][] transformation = null;
+        if (result <= totalProb) {
+            transformation = M1;
+        } else {
+            transformation = M0;
+            totalProb = 1 - totalProb;
+        }
+        
+        double[][] chain = new double[1][1];
+        chain[0][0] = 1.0;
+        for (int i = 0; i < index; i++) {
+            chain = Matrix.tensorMatrix(chain, I);
+        }
+        chain = Matrix.tensorMatrix(chain, transformation);
+        for (int i = index + 1; i < nbQubits; i++) {
+            chain = Matrix.tensorMatrix(chain, I);
+        }
+        
+        state = Matrix.transform(chain, state);
+        double k = 1.0 / Math.pow(totalProb, 0.5);
+        state = Matrix.scalarVector(k, state);
+    }
 
     public final double[][] H = {{1 / Math.sqrt(2), 1 / Math.sqrt(2)}, {1 / Math.sqrt(2), -1 / Math.sqrt(2)}};
     public final double[][] I = {{1, 0}, {0, 1}};
     public final double[][] S = {{1, 0, 0, 0}, {0, 0, 1, 0}, {0, 1, 0, 0}, {0, 0, 0, 1}};
     public final double[][] X = {{0, 1}, {1, 0}};
+    
+    public final double[][] M0 = {{1, 0}, {0, 0}};
+    public final double[][] M1 = {{0, 0}, {0, 1}};
     //public final double[][] CNOT = {{1, 0, 0, 0}, {0, 1, 0, 0}, {0, 0, 0, 1}, {0, 0, 1, 0}};
 }
