@@ -98,6 +98,9 @@ public class State {
     }
 
     public void cNot(int a, int b) {
+        /*
+        b depends on a
+        */
         double [][] cNotMatrix = new double[state.length][state.length];
         
         int idxA = nbQubits - 1 - a;
