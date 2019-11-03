@@ -2,11 +2,60 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
 
-<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="mcgillphys19.FXMLDocumentController">
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mcgillphys19.FXMLDocumentController">
     <children>
-        <Button fx:id="button" layoutX="126" layoutY="90" onAction="#handleButtonAction" text="Click Me!" />
-        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+        <Button fx:id="run" layoutX="564.0" layoutY="329.0" onAction="#handleRunAction" prefHeight="25.0" prefWidth="83.0" text="Run" textAlignment="CENTER" />
+      <VBox layoutX="26.0" layoutY="20.0" prefHeight="309.0" prefWidth="165.0" spacing="10.0">
+         <children>
+              <Label fx:id="inputMessage" minHeight="16" minWidth="69" text="Enter the state vector for each qubit:" wrapText="true" />
+            <Label fx:id="quBit1InputLabel" text="Q1:" />
+            <TextField fx:id="input1" promptText="(ex: 30,70) " />
+            <Label fx:id="quBit2InputLabel" layoutX="10.0" layoutY="43.0" text="Q2:" />
+            <TextField fx:id="input2" />
+            <Label fx:id="quBit3InputLabel" layoutX="10.0" layoutY="75.0" text="Q3:" />
+            <TextField fx:id="input3" />
+            <Label fx:id="quBit4InputLabel" layoutX="10.0" layoutY="108.0" text="Q4:" />
+            <TextField fx:id="input4" />
+         </children>
+      </VBox>
+      <Label fx:id="circuitMessage" layoutX="325.0" layoutY="16.0" prefHeight="40.0" prefWidth="341.0" text="Build your circuit by dragging the operators below onto the respective input line." wrapText="true" />
+      <HBox layoutX="325.0" layoutY="67.0" prefHeight="56.0" prefWidth="323.0" spacing="20.0">
+         <children>
+            <Label fx:id="operationsLabel" text="Operations:" />
+            <ImageView fx:id="hadamard" fitHeight="34.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="cnot" fitHeight="34.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="swap" fitHeight="34.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="measurer" fitHeight="34.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </HBox>
+      <VBox layoutX="325.0" layoutY="138.0" prefHeight="177.0" prefWidth="27.0" spacing="30.0">
+         <children>
+            <Label fx:id="quBit1CircuitLabel" prefHeight="17.0" prefWidth="52.0" text="Q1: " />
+            <Label fx:id="quBit2CircuitLabel" prefHeight="17.0" prefWidth="52.0" text="Q2: " />
+            <Label fx:id="quBit3CircuitLabel" prefHeight="17.0" prefWidth="52.0" text="Q3: " />
+            <Label fx:id="quBit4CircuitLabel" prefHeight="17.0" prefWidth="52.0" text="Q4: " />
+         </children>
+      </VBox>
+      <Label fx:id="outputMessage" layoutX="33.0" layoutY="369.0" prefHeight="40.0" prefWidth="611.0" text="Here you can see the final observed state of each qubit. Arrows pointing up denote a value of 1, down denotes a value of 0, and two arrows denotes an uncollapsed qubit." wrapText="true" />
+      <HBox layoutX="116.0" layoutY="464.0" prefHeight="56.0" prefWidth="467.0" spacing="100.0">
+         <children>
+            <Circle fx:id="qbit1" fill="DODGERBLUE" radius="19.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="qbit2" fill="DODGERBLUE" radius="19.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="qbit3" fill="DODGERBLUE" radius="19.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="qbit4" fill="DODGERBLUE" radius="19.0" stroke="BLACK" strokeType="INSIDE" />
+         </children>
+      </HBox>
+      <Line fx:id="line1" endX="163.66668701171875" endY="1.52587890625E-5" layoutX="469.0" layoutY="147.0" startX="-100.0" />
+      <Line fx:id="line2" endX="163.66668701171875" endY="1.52587890625E-5" layoutX="469.0" layoutY="195.0" startX="-100.0" />
+      <Line fx:id="line3" endX="163.66668701171875" endY="1.52587890625E-5" layoutX="469.0" layoutY="242.0" startX="-100.0" />
+      <Line fx:id="line4" endX="163.66668701171875" endY="1.52587890625E-5" layoutX="469.0" layoutY="292.0" startX="-100.0" />
     </children>
 </AnchorPane>
