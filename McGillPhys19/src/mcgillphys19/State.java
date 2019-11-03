@@ -16,7 +16,6 @@ public class State {
     public State(double[] state) {
         this.state = state;
         this.nbQubits = (int) (Math.log(state.length) / Math.log(2));
-        System.out.println(this.nbQubits);
     }
 
     public double[] getState() {
@@ -42,7 +41,6 @@ public class State {
                 operationChain = Matrix.tensorMatrix(operationChain, I);
             }
         }
-        System.out.println(Arrays.deepToString(operationChain));
 
         this.state = Matrix.transform(operationChain, this.getState());
     }
@@ -100,4 +98,5 @@ public class State {
     public final double[][] H = {{1 / Math.sqrt(2), 1 / Math.sqrt(2)}, {1 / Math.sqrt(2), -1 / Math.sqrt(2)}};
     public final double[][] I = {{1, 0}, {0, 1}};
     public final double[][] S = {{1, 0, 0, 0}, {0, 0, 1, 0}, {0, 1, 0, 0}, {0, 0, 0, 1}};
+    public final double[][] CNOT = {{1, 0, 0, 0}, {0, 1, 0, 0}, {0, 0, 0, 1}, {0, 0, 1, 0}};
 }
