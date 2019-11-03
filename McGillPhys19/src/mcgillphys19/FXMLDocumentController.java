@@ -16,11 +16,12 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Box;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
+import javafx.scene.shape.Rectangle;
 
 /**
  *
@@ -51,6 +52,38 @@ public class FXMLDocumentController implements Initializable {
 
     // FXML inputs
     @FXML
+    private Box line1Operation1;
+    @FXML
+    private Box line1Operation2;
+    @FXML
+    private Box line1Operation3;
+    @FXML
+    private Box line1Operation4;
+    @FXML
+    private Box line2Operation1;
+    @FXML
+    private Box line2Operation2;
+    @FXML
+    private Box line2Operation3;
+    @FXML
+    private Box line2Operation4;
+    @FXML
+    private Box line3Operation1;
+    @FXML
+    private Box line3Operation2;
+    @FXML
+    private Box line3Operation3;
+    @FXML
+    private Box line3Operation4;
+    @FXML
+    private Box line4Operation1;
+    @FXML
+    private Box line4Operation2;
+    @FXML
+    private Box line4Operation3;
+    @FXML
+    private Box line4Operation4;
+    @FXML
     private Label quBit1InputLabel;
     @FXML
     private Label quBit2InputLabel;
@@ -74,6 +107,8 @@ public class FXMLDocumentController implements Initializable {
     private Label outputMessage;
     @FXML
     private Label operationsLabel;
+    @FXML
+    private Label stateVectorMessage;
 
     @FXML
     private AnchorPane pane;
@@ -89,13 +124,13 @@ public class FXMLDocumentController implements Initializable {
     private Button run;
 
     @FXML
-    private ImageView hadamard;
+    private Rectangle hadamard;
     @FXML
-    private ImageView measurer;
+    private Rectangle measurer;
     @FXML
-    private ImageView swap;
+    private Rectangle swap;
     @FXML
-    private ImageView cnot;
+    private Rectangle cnot;
 
     // Outputs
     @FXML
@@ -107,14 +142,9 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void handleRunAction(ActionEvent event) {
         // Calculate the size of the arrows for the circles
-        System.out.println("You clicked me!");
+        
     }
 
-    public void onValueEntered(TextField input) {
-        if(input.getText().length() > 0) {
-            // Read the value entered
-        }
-    }
 
     public void addToPane(Node node) {
         pane.getChildren().add(node);
@@ -123,18 +153,34 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        // Window
-        pane.setPrefSize(700, 600);
-
         // Shapes
         
-        // Input methods
         
-        input1.setOnKeyPressed((KeyEvent event) ->{
-            
+        // Input methods
+        input1.setOnKeyPressed((KeyEvent event) -> {
+            if (input1.getText().length() > 0) {
+                // Read the value entered
+            }
         });
         
+        input2.setOnKeyPressed((KeyEvent event) -> {
+            if (input2.getText().length() > 0) {
+                // Read the value entered
+            }
+        });
         
+        input3.setOnKeyPressed((KeyEvent event) -> {
+            if (input3.getText().length() > 0) {
+                // Read the value entered
+            }
+        });
+        
+        input4.setOnKeyPressed((KeyEvent event) -> {
+            if (input4.getText().length() > 0) {
+                // Read the value entered
+            }
+        });
+
         double[] s1s = {0, 0, 1, 0};
         State s1 = new State(s1s);
         //s1.swap();
