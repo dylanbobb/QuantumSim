@@ -210,7 +210,11 @@ public class FXMLDocumentController implements Initializable {
         state = new State(stateVector);
         
         // Reading which funtion is which
+        
         System.out.println(line1_ops);
+        System.out.println(line2_ops);
+        System.out.println(line3_ops);
+        System.out.println(line4_ops);
         
         System.out.println(Arrays.toString(state.getState()));
         
@@ -448,6 +452,10 @@ public class FXMLDocumentController implements Initializable {
 
                 Dragboard db = event.getDragboard();
                 boolean success = false;
+                if(line1_ops.isEmpty()){
+                    line1_ops.add("i");
+                    line1_ops.add("i");
+                }
                 if (db.hasImage()) {
                     line1Operation1.setFill(new ImagePattern(db.getImage()));
                     line1Operation1.setOpacity(1);
@@ -467,6 +475,10 @@ public class FXMLDocumentController implements Initializable {
 
                 Dragboard db = event.getDragboard();
                 boolean success = false;
+                if(line1_ops.isEmpty()){
+                    line1_ops.add("i");
+                    line1_ops.add("i");
+                }
                 if (db.hasImage()) {
                     line1Operation2.setFill(new ImagePattern(db.getImage()));
                     line1Operation2.setOpacity(1);
@@ -486,6 +498,10 @@ public class FXMLDocumentController implements Initializable {
 
                 Dragboard db = event.getDragboard();
                 boolean success = false;
+                if(line1_ops.isEmpty()){
+                    line1_ops.add("i");
+                    line1_ops.add("i");
+                }
                 if (db.hasImage()) {
                     line1Operation3.setFill(new ImagePattern(db.getImage()));
                     line1Operation3.setOpacity(1);
@@ -505,6 +521,10 @@ public class FXMLDocumentController implements Initializable {
 
                 Dragboard db = event.getDragboard();
                 boolean success = false;
+                if(line2_ops.isEmpty()){
+                    line2_ops.add("i");
+                    line2_ops.add("i");
+                }
                 if (db.hasImage()) {
                     line2Operation1.setFill(new ImagePattern(db.getImage()));
                     line2Operation1.setOpacity(1);
@@ -524,6 +544,10 @@ public class FXMLDocumentController implements Initializable {
 
                 Dragboard db = event.getDragboard();
                 boolean success = false;
+               if(line2_ops.isEmpty()){
+                    line2_ops.add("i");
+                    line2_ops.add("i");
+                }
                 if (db.hasImage()) {
                     line2Operation2.setFill(new ImagePattern(db.getImage()));
                     line2Operation2.setOpacity(1);
@@ -543,6 +567,10 @@ public class FXMLDocumentController implements Initializable {
 
                 Dragboard db = event.getDragboard();
                 boolean success = false;
+                if(line2_ops.isEmpty()){
+                    line2_ops.add("i");
+                    line2_ops.add("i");
+                }
                 if (db.hasImage()) {
                     line2Operation3.setFill(new ImagePattern(db.getImage()));
                     line2Operation3.setOpacity(1);
@@ -562,6 +590,10 @@ public class FXMLDocumentController implements Initializable {
 
                 Dragboard db = event.getDragboard();
                 boolean success = false;
+                if(line3_ops.isEmpty()){
+                    line3_ops.add("i");
+                    line3_ops.add("i");
+                }
                 if (db.hasImage()) {
                     line3Operation1.setFill(new ImagePattern(db.getImage()));
                     line3Operation1.setOpacity(1);
@@ -581,6 +613,10 @@ public class FXMLDocumentController implements Initializable {
 
                 Dragboard db = event.getDragboard();
                 boolean success = false;
+                if(line3_ops.isEmpty()){
+                    line3_ops.add("i");
+                    line3_ops.add("i");
+                }
                 if (db.hasImage()) {
                     line3Operation2.setFill(new ImagePattern(db.getImage()));
                     line3Operation2.setOpacity(1);
@@ -600,6 +636,10 @@ public class FXMLDocumentController implements Initializable {
 
                 Dragboard db = event.getDragboard();
                 boolean success = false;
+                if(line3_ops.isEmpty()){
+                    line3_ops.add("i");
+                    line3_ops.add("i");
+                }
                 if (db.hasImage()) {
                     line3Operation3.setFill(new ImagePattern(db.getImage()));
                     line3Operation3.setOpacity(1);
@@ -619,6 +659,10 @@ public class FXMLDocumentController implements Initializable {
 
                 Dragboard db = event.getDragboard();
                 boolean success = false;
+                if(line4_ops.isEmpty()){
+                    line4_ops.add("i");
+                    line4_ops.add("i");
+                }
                 if (db.hasImage() && !db.getImage().equals(swap_image) && !db.getImage().equals(cnot_image)) {
                     line4Operation1.setFill(new ImagePattern(db.getImage()));
                     line4Operation1.setOpacity(1);
@@ -638,6 +682,10 @@ public class FXMLDocumentController implements Initializable {
 
                 Dragboard db = event.getDragboard();
                 boolean success = false;
+                if(line4_ops.isEmpty()){
+                    line4_ops.add("i");
+                    line4_ops.add("i");
+                }
                 if (db.hasImage() && !db.getImage().equals(swap_image) && !db.getImage().equals(cnot_image)) {
                     line4Operation2.setFill(new ImagePattern(db.getImage()));
                     line4Operation2.setOpacity(1);
@@ -657,10 +705,12 @@ public class FXMLDocumentController implements Initializable {
 
                 Dragboard db = event.getDragboard();
                 boolean success = false;
-                if (is_cnot_or_swap) {
-                    line4Operation3.setDisable(true);
-                } 
-                else if (db.hasImage()) {
+                
+                if(line4_ops.isEmpty()){
+                    line4_ops.add("i");
+                    line4_ops.add("i");
+                }
+                if (db.hasImage()) {
                     line4Operation3.setFill(new ImagePattern(db.getImage()));
                     line4Operation3.setOpacity(1);
                     
