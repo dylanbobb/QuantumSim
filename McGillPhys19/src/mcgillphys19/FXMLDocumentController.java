@@ -26,6 +26,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
@@ -153,6 +154,9 @@ public class FXMLDocumentController implements Initializable {
     private Tab deutschTab;
     @FXML
     private AnchorPane pane;
+    
+    @FXML
+    private AnchorPane deupane;
     @FXML
     private TextField input1;
     @FXML
@@ -165,9 +169,21 @@ public class FXMLDocumentController implements Initializable {
     private Button run;
     @FXML
     private Button clear;
-    
+
     @FXML
     private Button step;
+    
+    @FXML
+    private Button notButton;
+    
+    @FXML
+    private Button cte0;
+    
+    @FXML
+    private Button cte1;
+    
+    @FXML
+    private Button id;
 
     @FXML
     private Rectangle hadamard;
@@ -177,15 +193,33 @@ public class FXMLDocumentController implements Initializable {
     private Rectangle swap;
     @FXML
     private Rectangle cnot;
-    
-    private int currCol = 0;
 
-    // Outputs
     @FXML
-    private Group line1Area;
-//    private Group line2Area;
-//    private Group line3Area;
-//    private Group line4Area;
+    private Pane p11;
+    @FXML
+    private Pane p12;
+    @FXML
+    private Pane p13;
+    @FXML
+    private Pane p21;
+    @FXML
+    private Pane p22;
+    @FXML
+    private Pane p23;
+    @FXML
+    private Pane p31;
+    @FXML
+    private Pane p32;
+    @FXML
+    private Pane p33;
+    @FXML
+    private Pane p41;
+    @FXML
+    private Pane p42;
+    @FXML
+    private Pane p43;
+
+    private int currCol = 0;
 
     @FXML
     public void handleClearAction(ActionEvent event) {
@@ -194,6 +228,21 @@ public class FXMLDocumentController implements Initializable {
         line2_ops = new ArrayList(3);
         line3_ops = new ArrayList(3);
         line4_ops = new ArrayList(3);
+
+        p11.setStyle("-fx-background-color: rgba(4,249,207,0.3)");
+        p21.setStyle("-fx-background-color: rgba(4,249,207,0.3)");
+        p31.setStyle("-fx-background-color: rgba(4,249,207,0.3)");
+        p41.setStyle("-fx-background-color: rgba(4,249,207,0.3)");
+
+        p12.setStyle("-fx-background-color: rgba(4,249,207,0.0)");
+        p22.setStyle("-fx-background-color: rgba(4,249,207,0.0)");
+        p32.setStyle("-fx-background-color: rgba(4,249,207,0.0)");
+        p42.setStyle("-fx-background-color: rgba(4,249,207,0.0)");
+
+        p13.setStyle("-fx-background-color: rgba(4,249,207,0.0)");
+        p23.setStyle("-fx-background-color: rgba(4,249,207,0.0)");
+        p33.setStyle("-fx-background-color: rgba(4,249,207,0.0)");
+        p43.setStyle("-fx-background-color: rgba(4,249,207,0.0)");
 
         line1Operation1.setFill(Paint.valueOf("blue"));
         line1Operation1.setOpacity(0.1);
@@ -227,7 +276,7 @@ public class FXMLDocumentController implements Initializable {
         qbit2.setFill(Paint.valueOf("purple"));
         qbit3.setFill(Paint.valueOf("purple"));
         qbit4.setFill(Paint.valueOf("purple"));
-        
+
         double[] end = state.getState().clone();
         for (int i = 0; i < end.length; i++) {
             end[i] = 0;
@@ -249,11 +298,44 @@ public class FXMLDocumentController implements Initializable {
         System.out.println(id + " : " + Arrays.toString(driver.getState()));
         dutchAnswer.setText(Arrays.toString(driver.getState()));
     }
-    
+
     @FXML
-    private void stepButton(ActionEvent event)
-    {
+    private void stepButton(ActionEvent event) {
         System.out.println(currCol);
+        if (currCol == 0) {
+            p11.setStyle("-fx-background-color: rgba(4,249,207,0.0)");
+            p21.setStyle("-fx-background-color: rgba(4,249,207,0.0)");
+            p31.setStyle("-fx-background-color: rgba(4,249,207,0.0)");
+            p41.setStyle("-fx-background-color: rgba(4,249,207,0.0)");
+
+            p12.setStyle("-fx-background-color: rgba(4,249,207,0.3)");
+            p22.setStyle("-fx-background-color: rgba(4,249,207,0.3)");
+            p32.setStyle("-fx-background-color: rgba(4,249,207,0.3)");
+            p42.setStyle("-fx-background-color: rgba(4,249,207,0.3)");
+        }
+        if (currCol == 1) {
+            p12.setStyle("-fx-background-color: rgba(4,249,207,0.0)");
+            p22.setStyle("-fx-background-color: rgba(4,249,207,0.0)");
+            p32.setStyle("-fx-background-color: rgba(4,249,207,0.0)");
+            p42.setStyle("-fx-background-color: rgba(4,249,207,0.0)");
+
+            p13.setStyle("-fx-background-color: rgba(4,249,207,0.3)");
+            p23.setStyle("-fx-background-color: rgba(4,249,207,0.3)");
+            p33.setStyle("-fx-background-color: rgba(4,249,207,0.3)");
+            p43.setStyle("-fx-background-color: rgba(4,249,207,0.3)");
+        }
+        if (currCol == 2) {
+            p13.setStyle("-fx-background-color: rgba(4,249,207,0.0)");
+            p23.setStyle("-fx-background-color: rgba(4,249,207,0.0)");
+            p33.setStyle("-fx-background-color: rgba(4,249,207,0.0)");
+            p43.setStyle("-fx-background-color: rgba(4,249,207,0.0)");
+        }
+        if (currCol == 3) {
+            p11.setStyle("-fx-background-color: rgba(4,249,207,0.3)");
+            p21.setStyle("-fx-background-color: rgba(4,249,207,0.3)");
+            p31.setStyle("-fx-background-color: rgba(4,249,207,0.3)");
+            p41.setStyle("-fx-background-color: rgba(4,249,207,0.3)");
+        }
         if (currCol == 0) {
             // Calculate the size of the arrows for the circles
             String[] q1s = input1.getText().split(",");
@@ -274,85 +356,84 @@ public class FXMLDocumentController implements Initializable {
             stateVector = Matrix.tensorVectors(stateVector, q3);
             stateVector = Matrix.tensorVectors(stateVector, q4);
             state = new State(stateVector);
-            
-        }
-        else if (currCol == 3){
+
+        } else if (currCol == 3) {
             handleRunAction(event);
             currCol = 3;
         }
         if (currCol != 3) {
-        // Reading which funtion is which
-        if (line1_ops.size() == 0) {
-            line1_ops.add("i");
-            line1_ops.add("i");
-            line1_ops.add("i");
-        }
-        if (line2_ops.size() == 0) {
-            line2_ops.add("i");
-            line2_ops.add("i");
-            line2_ops.add("i");
-        }
-        if (line3_ops.size() == 0) {
-            line3_ops.add("i");
-            line3_ops.add("i");
-            line3_ops.add("i");
-        }
-        if (line4_ops.size() == 0) {
-            line4_ops.add("i");
-            line4_ops.add("i");
-            line4_ops.add("i");
+            // Reading which funtion is which
+            if (line1_ops.size() == 0) {
+                line1_ops.add("i");
+                line1_ops.add("i");
+                line1_ops.add("i");
+            }
+            if (line2_ops.size() == 0) {
+                line2_ops.add("i");
+                line2_ops.add("i");
+                line2_ops.add("i");
+            }
+            if (line3_ops.size() == 0) {
+                line3_ops.add("i");
+                line3_ops.add("i");
+                line3_ops.add("i");
+            }
+            if (line4_ops.size() == 0) {
+                line4_ops.add("i");
+                line4_ops.add("i");
+                line4_ops.add("i");
+            }
+
+            if (line1_ops.get(currCol).equalsIgnoreCase("h")) {
+                int[] selection = {0};
+                state.h(selection);
+            }
+            if (line2_ops.get(currCol).equalsIgnoreCase("h")) {
+                int[] selection = {1};
+                state.h(selection);
+            }
+            if (line3_ops.get(currCol).equalsIgnoreCase("h")) {
+                int[] selection = {2};
+                state.h(selection);
+            }
+            if (line4_ops.get(currCol).equalsIgnoreCase("h")) {
+                int[] selection = {3};
+                state.h(selection);
+            }
+            if (line1_ops.get(currCol).equalsIgnoreCase("cnot")) {
+                state.cNot(0, 1);
+            }
+            if (line2_ops.get(currCol).equalsIgnoreCase("cnot")) {
+                state.cNot(1, 2);
+            }
+            if (line3_ops.get(currCol).equalsIgnoreCase("cnot")) {
+                state.cNot(2, 3);
+            }
+            if (line1_ops.get(currCol).equalsIgnoreCase("swap")) {
+                state.swap(0, 1);
+            }
+            if (line2_ops.get(currCol).equalsIgnoreCase("swap")) {
+                state.swap(1, 2);
+            }
+            if (line3_ops.get(currCol).equalsIgnoreCase("swap")) {
+                state.swap(2, 3);
+            }
+            if (line1_ops.get(currCol).equalsIgnoreCase("m")) {
+                state.collapse(rand, 0);
+            }
+            if (line2_ops.get(currCol).equalsIgnoreCase("m")) {
+                state.collapse(rand, 1);
+            }
+            if (line3_ops.get(currCol).equalsIgnoreCase("m")) {
+                state.collapse(rand, 2);
+            }
+            if (line4_ops.get(currCol).equalsIgnoreCase("m")) {
+                state.collapse(rand, 3);
+            }
         }
 
-        if (line1_ops.get(currCol).equalsIgnoreCase("h")) {
-            int[] selection = {0};
-            state.h(selection);
-        }
-        if (line2_ops.get(currCol).equalsIgnoreCase("h")) {
-            int[] selection = {1};
-            state.h(selection);
-        }
-        if (line3_ops.get(currCol).equalsIgnoreCase("h")) {
-            int[] selection = {2};
-            state.h(selection);
-        }
-        if (line4_ops.get(currCol).equalsIgnoreCase("h")) {
-            int[] selection = {3};
-            state.h(selection);
-        }
-        if (line1_ops.get(currCol).equalsIgnoreCase("cnot")) {
-            state.cNot(0, 1);
-        }
-        if (line2_ops.get(currCol).equalsIgnoreCase("cnot")) {
-            state.cNot(1, 2);
-        }
-        if (line3_ops.get(currCol).equalsIgnoreCase("cnot")) {
-            state.cNot(2, 3);
-        }
-        if (line1_ops.get(currCol).equalsIgnoreCase("swap")) {
-            state.swap(0, 1);
-        }
-        if (line2_ops.get(currCol).equalsIgnoreCase("swap")) {
-            state.swap(1, 2);
-        }
-        if (line3_ops.get(currCol).equalsIgnoreCase("swap")) {
-            state.swap(2, 3);
-        }
-        if (line1_ops.get(currCol).equalsIgnoreCase("m")) {
-            state.collapse(rand, 0);
-        }
-        if (line2_ops.get(currCol).equalsIgnoreCase("m")) {
-            state.collapse(rand, 1);
-        }
-        if (line3_ops.get(currCol).equalsIgnoreCase("m")) {
-            state.collapse(rand, 2);
-        }
-        if (line4_ops.get(currCol).equalsIgnoreCase("m")) {
-            state.collapse(rand, 3);
-        }
-        }
-        
         currCol = (currCol + 1) % 4;
-        
+
         double[] end = state.getState().clone();
         for (int i = 0; i < end.length; i++) {
             end[i] = 100.0 * end[i] * end[i];
@@ -425,6 +506,21 @@ public class FXMLDocumentController implements Initializable {
         stateVector = Matrix.tensorVectors(stateVector, q3);
         stateVector = Matrix.tensorVectors(stateVector, q4);
         state = new State(stateVector);
+        
+        p11.setStyle("-fx-background-color: rgba(4,249,207,0.3)");
+        p21.setStyle("-fx-background-color: rgba(4,249,207,0.3)");
+        p31.setStyle("-fx-background-color: rgba(4,249,207,0.3)");
+        p41.setStyle("-fx-background-color: rgba(4,249,207,0.3)");
+
+        p12.setStyle("-fx-background-color: rgba(4,249,207,0.0)");
+        p22.setStyle("-fx-background-color: rgba(4,249,207,0.0)");
+        p32.setStyle("-fx-background-color: rgba(4,249,207,0.0)");
+        p42.setStyle("-fx-background-color: rgba(4,249,207,0.0)");
+
+        p13.setStyle("-fx-background-color: rgba(4,249,207,0.0)");
+        p23.setStyle("-fx-background-color: rgba(4,249,207,0.0)");
+        p33.setStyle("-fx-background-color: rgba(4,249,207,0.0)");
+        p43.setStyle("-fx-background-color: rgba(4,249,207,0.0)");
 
         // Reading which funtion is which
         if (line1_ops.size() == 0) {
@@ -558,6 +654,7 @@ public class FXMLDocumentController implements Initializable {
         outputMessage.getStyleClass().add("label_style");
         circuitMessage.getStyleClass().add("label_style");
         operationsLabel.getStyleClass().add("label_style");
+        stateVectorMessage.getStyleClass().add("label_style");
         quBit1InputLabel.getStyleClass().add("q_label_style");
         quBit2InputLabel.getStyleClass().add("q_label_style");
         quBit3InputLabel.getStyleClass().add("q_label_style");
@@ -576,7 +673,21 @@ public class FXMLDocumentController implements Initializable {
         input4.getStyleClass().add("textfield_style");
         run.getStyleClass().add("button_style");
         clear.getStyleClass().add("button_style");
+        step.getStyleClass().add("button_style");
         pane.getStyleClass().add("pane");
+        deupane.getStyleClass().add("pane");
+        notButton.getStyleClass().add("button_style");
+        cte0.getStyleClass().add("button_style");
+        cte1.getStyleClass().add("button_style");
+        id.getStyleClass().add("button_style");
+        dutchAnswer.getStyleClass().add("label_style");
+        dutchLabel.getStyleClass().add("label_style");
+
+        // Column highlight
+        p11.setStyle("-fx-background-color: rgba(4,249,207,0.3)");
+        p21.setStyle("-fx-background-color: rgba(4,249,207,0.3)");
+        p31.setStyle("-fx-background-color: rgba(4,249,207,0.3)");
+        p41.setStyle("-fx-background-color: rgba(4,249,207,0.3)");
 
         // Images
         Image hadamard_image = new Image(fileURL("./assets/hadamard_image.jpg"));

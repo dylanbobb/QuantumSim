@@ -38,3 +38,7 @@
     -fx-background-color: darkorange;
     -fx-effect: dropshadow(gaussian, orange, 12.0, 0.5, 0, 0);
 }
+
+.pane_style{
+    -fx-background-color: rgba(4,249,107,0.3);
+}

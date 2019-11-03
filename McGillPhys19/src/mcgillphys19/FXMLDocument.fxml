@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="700.0" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mcgillphys19.FXMLDocumentController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="700.0" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mcgillphys19.FXMLDocumentController">
    <children>
       <TabPane fx:id="tabPane" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
@@ -82,72 +82,72 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Pane prefHeight="40.0" prefWidth="38.0">
+                              <Pane fx:id="p11" prefHeight="40.0" prefWidth="38.0">
                                  <children>
                                     <Rectangle fx:id="line1Operation1" arcHeight="5.0" arcWidth="5.0" fill="#2197ff33" height="31.0" layoutX="21.0" layoutY="9.0" opacity="0.1" stroke="BLACK" strokeType="INSIDE" width="30.0" />
                                  </children>
                               </Pane>
-                              <Pane prefHeight="40.0" prefWidth="38.0" GridPane.columnIndex="1">
+                              <Pane fx:id="p12" prefHeight="40.0" prefWidth="38.0" GridPane.columnIndex="1">
                                  <children>
                                     <Rectangle fx:id="line1Operation2" arcHeight="5.0" arcWidth="5.0" fill="#2197ff33" height="31.0" layoutX="21.0" layoutY="9.0" opacity="0.1" stroke="BLACK" strokeType="INSIDE" width="30.0" />
                                  </children>
                               </Pane>
-                              <Pane prefHeight="40.0" prefWidth="38.0" GridPane.columnIndex="2">
+                              <Pane fx:id="p13" prefHeight="40.0" prefWidth="38.0" GridPane.columnIndex="2">
                                  <children>
                                     <Rectangle fx:id="line1Operation3" arcHeight="5.0" arcWidth="5.0" fill="#2197ff33" height="31.0" layoutX="21.0" layoutY="9.0" opacity="0.1" stroke="BLACK" strokeType="INSIDE" width="30.0" />
                                  </children>
                               </Pane>
-                              <Pane prefHeight="40.0" prefWidth="38.0" GridPane.rowIndex="1">
+                              <Pane fx:id="p21" prefHeight="40.0" prefWidth="38.0" GridPane.rowIndex="1">
                                  <children>
                                     <Rectangle fx:id="line2Operation1" arcHeight="5.0" arcWidth="5.0" fill="#2197ff33" height="31.0" layoutX="21.0" layoutY="9.0" opacity="0.1" stroke="BLACK" strokeType="INSIDE" width="30.0" />
                                  </children>
                               </Pane>
-                              <Pane prefHeight="40.0" prefWidth="38.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                              <Pane fx:id="p22" prefHeight="40.0" prefWidth="38.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <children>
                                     <Rectangle fx:id="line2Operation2" arcHeight="5.0" arcWidth="5.0" fill="#2197ff33" height="31.0" layoutX="21.0" layoutY="9.0" opacity="0.1" stroke="BLACK" strokeType="INSIDE" width="30.0" />
                                  </children>
                               </Pane>
-                              <Pane prefHeight="40.0" prefWidth="38.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                              <Pane fx:id="p23" prefHeight="40.0" prefWidth="38.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                  <children>
                                     <Rectangle fx:id="line2Operation3" arcHeight="5.0" arcWidth="5.0" fill="#2197ff33" height="31.0" layoutX="21.0" layoutY="9.0" opacity="0.1" stroke="BLACK" strokeType="INSIDE" width="30.0" />
                                  </children>
                               </Pane>
-                              <Pane prefHeight="40.0" prefWidth="38.0" GridPane.rowIndex="2">
+                              <Pane fx:id="p31" prefHeight="40.0" prefWidth="38.0" GridPane.rowIndex="2">
                                  <children>
                                     <Rectangle fx:id="line3Operation1" arcHeight="5.0" arcWidth="5.0" fill="#2197ff33" height="31.0" layoutX="21.0" layoutY="9.0" opacity="0.1" stroke="BLACK" strokeType="INSIDE" width="30.0" />
                                  </children>
                               </Pane>
-                              <Pane prefHeight="40.0" prefWidth="38.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                              <Pane fx:id="p32" prefHeight="40.0" prefWidth="38.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                  <children>
                                     <Rectangle fx:id="line3Operation2" arcHeight="5.0" arcWidth="5.0" fill="#2197ff33" height="31.0" layoutX="21.0" layoutY="9.0" opacity="0.1" stroke="BLACK" strokeType="INSIDE" width="30.0" />
                                  </children>
                               </Pane>
-                              <Pane prefHeight="40.0" prefWidth="38.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                              <Pane fx:id="p33" prefHeight="40.0" prefWidth="38.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                                  <children>
                                     <Rectangle fx:id="line3Operation3" arcHeight="5.0" arcWidth="5.0" fill="#2197ff33" height="31.0" layoutX="21.0" layoutY="9.0" opacity="0.1" stroke="BLACK" strokeType="INSIDE" width="30.0" />
                                  </children>
                               </Pane>
-                              <Pane prefHeight="40.0" prefWidth="38.0" GridPane.rowIndex="3">
+                              <Pane fx:id="p41" prefHeight="40.0" prefWidth="38.0" GridPane.rowIndex="3">
                                  <children>
                                     <Rectangle fx:id="line4Operation1" arcHeight="5.0" arcWidth="5.0" fill="#2197ff33" height="31.0" layoutX="21.0" layoutY="9.0" opacity="0.1" stroke="BLACK" strokeType="INSIDE" width="30.0" />
                                  </children>
                               </Pane>
-                              <Pane prefHeight="40.0" prefWidth="38.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                              <Pane fx:id="p42" prefHeight="40.0" prefWidth="38.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                  <children>
                                     <Rectangle fx:id="line4Operation2" arcHeight="5.0" arcWidth="5.0" fill="#2197ff33" height="31.0" layoutX="21.0" layoutY="9.0" opacity="0.1" stroke="BLACK" strokeType="INSIDE" width="30.0" />
                                  </children>
                               </Pane>
-                              <Pane prefHeight="40.0" prefWidth="38.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                              <Pane fx:id="p43" prefHeight="40.0" prefWidth="38.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
                                  <children>
                                     <Rectangle fx:id="line4Operation3" arcHeight="5.0" arcWidth="5.0" fill="#2197ff33" height="31.0" layoutX="21.0" layoutY="9.0" opacity="0.1" stroke="BLACK" strokeType="INSIDE" width="30.0" />
                                  </children>
                               </Pane>
                            </children>
                         </GridPane>
-                        <Label fx:id="stateVectorMessage" layoutX="186.0" layoutY="23.0" wrapText="true" />
                         <Button fx:id="clear" layoutX="374.0" layoutY="329.0" mnemonicParsing="false" onAction="#handleClearAction" prefHeight="25.0" prefWidth="83.0" text="Clear" />
-                        <Label fx:id="lblVector" layoutX="186.0" layoutY="14.0" prefHeight="342.0" prefWidth="115.0" textFill="WHITE" />
+                        <Label fx:id="lblVector" layoutX="175.0" layoutY="45.0" prefHeight="355.0" prefWidth="115.0" textFill="WHITE" />
                         <Button fx:id="step" layoutX="479.0" layoutY="328.0" mnemonicParsing="false" onAction="#stepButton" prefHeight="26.0" prefWidth="83.0" text="Step" />
+                        <Label fx:id="stateVectorMessage" alignment="CENTER" layoutX="152.0" layoutY="14.0" prefHeight="37.0" prefWidth="118.0" text="State Vector" wrapText="true" />
                      </children>
                   </AnchorPane>
                </content>
@@ -282,23 +282,23 @@
           </Tab>
           <Tab fx:id="deutschTab" text="Deutsch's Algorithm">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane fx:id="deupane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Line endX="331.199951171875" endY="1.52587890625E-5" layoutX="216.0" layoutY="177.0" startX="-100.0" />
                         <Line endX="332.0" endY="3.0517578125E-5" layoutX="216.0" layoutY="245.0" startX="-100.0" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="160.0" layoutY="162.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="227.0" layoutY="161.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" height="166.0" layoutX="269.0" layoutY="110.0" stroke="BLACK" strokeType="INSIDE" width="119.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" height="166.0" layoutX="272.0" layoutY="119.0" stroke="BLACK" strokeType="INSIDE" width="119.0" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="160.0" layoutY="229.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="227.0" layoutY="231.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="32.0" layoutX="413.0" layoutY="160.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="32.0" layoutX="413.0" layoutY="229.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
                         <HBox layoutX="88.0" layoutY="405.0" prefHeight="100.0" prefWidth="523.0" spacing="50.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#notButton" prefHeight="26.0" prefWidth="85.0" text="Not" />
-                              <Button mnemonicParsing="false" onAction="#constantZero" text="Constant 0" />
-                              <Button mnemonicParsing="false" onAction="#constantOne" text="Constant 1" />
-                              <Button mnemonicParsing="false" onAction="#Identity" text="Identity" />
+                              <Button fx:id="notButton" mnemonicParsing="false" onAction="#notButton" prefHeight="26.0" prefWidth="85.0" text="Not" />
+                              <Button fx:id="cte0" mnemonicParsing="false" onAction="#constantZero" text="Constant 0" />
+                              <Button fx:id="cte1" mnemonicParsing="false" onAction="#constantOne" text="Constant 1" />
+                              <Button fx:id="id" mnemonicParsing="false" onAction="#Identity" text="Identity" />
                            </children>
                         </HBox>
                         <Label layoutX="171.0" layoutY="169.0" text="X" />
