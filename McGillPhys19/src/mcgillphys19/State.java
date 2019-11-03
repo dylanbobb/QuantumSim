@@ -72,9 +72,23 @@ public class State {
         }
     }
 
-    public void cNot() {
-        double[][] cNot = {{1, 0, 0, 0}, {0, 1, 0, 0}, {0, 0, 0, 1}, {0, 0, 1, 0}};
-        this.state = Matrix.transform(cNot, this.getState());
+    public void cNot(int a, int b) {
+        double [][] cNotMatrix = new double[state.length][state.length];
+        
+        int idxA = nbQubits - 1 - a;
+        int idxB = nbQubits - 1 - b;
+        int powA = ((int) Math.pow(2, idxA));
+        
+        for (int i = 0; i < cNotMatrix.length; i++) {
+            if ((i / powA) % 2 == 1) {
+                cNotMatrix[i][i ^ ((int) Math.pow(2, idxB))] = 1;
+            }
+            else {
+                cNotMatrix[i][i] = 1;
+            }
+        }
+        
+        this.state = Matrix.transform(cNotMatrix, this.getState());
     }
 
     public void collapse(Random rand) {
@@ -98,5 +112,5 @@ public class State {
     public final double[][] H = {{1 / Math.sqrt(2), 1 / Math.sqrt(2)}, {1 / Math.sqrt(2), -1 / Math.sqrt(2)}};
     public final double[][] I = {{1, 0}, {0, 1}};
     public final double[][] S = {{1, 0, 0, 0}, {0, 0, 1, 0}, {0, 1, 0, 0}, {0, 0, 0, 1}};
-    public final double[][] CNOT = {{1, 0, 0, 0}, {0, 1, 0, 0}, {0, 0, 0, 1}, {0, 0, 1, 0}};
+    //public final double[][] CNOT = {{1, 0, 0, 0}, {0, 1, 0, 0}, {0, 0, 0, 1}, {0, 0, 1, 0}};
 }
