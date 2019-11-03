@@ -197,10 +197,10 @@ public class FXMLDocumentController implements Initializable {
         line4Operation3.setFill(Paint.valueOf("blue"));
         line4Operation3.setOpacity(0.1);
 
-        qbit1.setFill(Paint.valueOf("dodgerblue"));
-        qbit2.setFill(Paint.valueOf("dodgerblue"));
-        qbit3.setFill(Paint.valueOf("dodgerblue"));
-        qbit4.setFill(Paint.valueOf("dodgerblue"));
+        qbit1.setFill(Paint.valueOf("purple"));
+        qbit2.setFill(Paint.valueOf("purple"));
+        qbit3.setFill(Paint.valueOf("purple"));
+        qbit4.setFill(Paint.valueOf("purple"));
     }
 
     @FXML
@@ -401,7 +401,32 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        
+        // Styles
+        inputMessage.getStyleClass().add("label_style");
+        outputMessage.getStyleClass().add("label_style");
+        circuitMessage.getStyleClass().add("label_style");
+        operationsLabel.getStyleClass().add("label_style");
+        quBit1InputLabel.getStyleClass().add("q_label_style");
+        quBit2InputLabel.getStyleClass().add("q_label_style");
+        quBit3InputLabel.getStyleClass().add("q_label_style");
+        quBit4InputLabel.getStyleClass().add("q_label_style");
+        quBit1CircuitLabel.getStyleClass().add("q_label_style");
+        quBit2CircuitLabel.getStyleClass().add("q_label_style");
+        quBit3CircuitLabel.getStyleClass().add("q_label_style");
+        quBit4CircuitLabel.getStyleClass().add("q_label_style");
+        qbit1.getStyleClass().add("qubit_style");
+        qbit2.getStyleClass().add("qubit_style");
+        qbit3.getStyleClass().add("qubit_style");
+        qbit4.getStyleClass().add("qubit_style");
+        input1.getStyleClass().add("textfield_style");
+        input2.getStyleClass().add("textfield_style");
+        input3.getStyleClass().add("textfield_style");
+        input4.getStyleClass().add("textfield_style");
+        run.getStyleClass().add("button_style");
+        clear.getStyleClass().add("button_style");
+        pane.getStyleClass().add("pane");
+        
         // Images
         Image hadamard_image = new Image(fileURL("./assets/hadamard_image.jpg"));
         Image swap_image = new Image(fileURL("./assets/swap_image.jpg"));
@@ -876,7 +901,7 @@ public class FXMLDocumentController implements Initializable {
                     line4_ops.add("i");
                     line4_ops.add("i");
                 }
-                if (db.hasImage() && !db.getImage().equals(swap_image) && !db.getImage().equals(cnot_image)) {
+                if (db.hasImage()) {
                     line4Operation1.setFill(new ImagePattern(db.getImage()));
                     line4Operation1.setOpacity(1);
 
@@ -899,7 +924,7 @@ public class FXMLDocumentController implements Initializable {
                     line4_ops.add("i");
                     line4_ops.add("i");
                 }
-                if (db.hasImage() && !db.getImage().equals(swap_image) && !db.getImage().equals(cnot_image)) {
+                if (db.hasImage()) {
                     line4Operation2.setFill(new ImagePattern(db.getImage()));
                     line4Operation2.setOpacity(1);
 

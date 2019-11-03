@@ -22,6 +22,7 @@ public class McGillPhys19 extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         
         Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("label.css").toExternalForm());
         stage.setTitle("QuBits");
         stage.minWidthProperty().bind(scene.widthProperty());
         stage.minHeightProperty().bind(scene.heightProperty());
