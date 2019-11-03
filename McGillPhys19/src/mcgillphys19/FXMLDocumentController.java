@@ -165,6 +165,9 @@ public class FXMLDocumentController implements Initializable {
     private Button run;
     @FXML
     private Button clear;
+    
+    @FXML
+    private Button step;
 
     @FXML
     private Rectangle hadamard;
@@ -221,6 +224,13 @@ public class FXMLDocumentController implements Initializable {
         qbit2.setFill(Paint.valueOf("purple"));
         qbit3.setFill(Paint.valueOf("purple"));
         qbit4.setFill(Paint.valueOf("purple"));
+        
+        double[] end = state.getState().clone();
+        for (int i = 0; i < end.length; i++) {
+            end[i] = 0;
+        }
+        lblVector.setText(String.format(formatStr, end[0], end[1], end[2], end[3], end[4], end[5], end[6], end[7], end[8], end[9], end[10], end[11], end[12], end[13], end[14], end[15]));
+
     }
 
     @FXML
