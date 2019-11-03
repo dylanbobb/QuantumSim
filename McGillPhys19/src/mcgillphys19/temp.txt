@@ -9,3 +9,14 @@ id = 2;
 driver.U(id);
 driver.h(selection);
 System.out.println(id + " : " + Arrays.toString(driver.getState()));
+
+
+
+
+double[] state = {1, 0, 0, 0};
+State driver = new State(state);
+int[] selection = {0};
+driver.h(selection);
+driver.cNot(0, 1);
+driver.collapse(rand, 0);
+System.out.println(Arrays.toString(driver.getState()));

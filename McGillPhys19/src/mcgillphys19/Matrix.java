@@ -85,4 +85,12 @@ public class Matrix {
         
         return C;
     }
+    
+    public static double[] scalarVector(double k, double [] v) {
+        for (int i = 0; i < v.length; i++) {
+            v[i] = k * v[i];
+        }
+        
+        return v;
+    }
 }
