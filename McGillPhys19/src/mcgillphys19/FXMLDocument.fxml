@@ -14,12 +14,12 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane id="AnchorPane" fx:id="pane" minHeight="600.0" minWidth="700.0" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mcgillphys19.FXMLDocumentController">
+<AnchorPane id="AnchorPane" fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="700.0" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mcgillphys19.FXMLDocumentController">
     <children>
         <Button fx:id="run" layoutX="583.0" layoutY="329.0" onAction="#handleRunAction" prefHeight="25.0" prefWidth="83.0" text="Run" textAlignment="CENTER" />
       <VBox layoutX="26.0" layoutY="20.0" prefHeight="309.0" prefWidth="92.0" spacing="10.0">
          <children>
-              <Label fx:id="inputMessage" minHeight="16" minWidth="69" text="Enter the state vector for each qubit:" wrapText="true" />
+              <Label fx:id="inputMessage" minHeight="16" minWidth="69" prefHeight="98.0" prefWidth="92.0" text="Enter States" textOverrun="CLIP" wrapText="true" />
             <Label fx:id="quBit1InputLabel" text="Q1:" />
             <TextField fx:id="input1" promptText="(ex: 30,70) " />
             <Label fx:id="quBit2InputLabel" layoutX="10.0" layoutY="43.0" text="Q2:" />
@@ -30,7 +30,7 @@
             <TextField fx:id="input4" />
          </children>
       </VBox>
-      <Label fx:id="circuitMessage" layoutX="350.0" layoutY="20.0" prefHeight="40.0" prefWidth="341.0" text="Build your circuit by dragging the operators below onto the respective input line." wrapText="true" />
+      <Label fx:id="circuitMessage" layoutX="350.0" layoutY="4.0" prefHeight="56.0" prefWidth="342.0" text="Build your circuit by dragging the operators below onto the respective input line." textOverrun="CLIP" wrapText="true" />
       <HBox layoutX="359.0" layoutY="67.0" prefHeight="56.0" prefWidth="323.0" spacing="15.0">
          <children>
             <Label fx:id="operationsLabel" text="Operations:" />
@@ -48,7 +48,7 @@
             <Label fx:id="quBit4CircuitLabel" prefHeight="17.0" prefWidth="52.0" text="Q4: " />
          </children>
       </VBox>
-      <Label fx:id="outputMessage" layoutX="33.0" layoutY="369.0" prefHeight="40.0" prefWidth="611.0" text="Here you can see the final observed state of each qubit. Arrows pointing up denote a value of 1, down denotes a value of 0, and two arrows denotes an uncollapsed qubit." wrapText="true" />
+      <Label fx:id="outputMessage" alignment="CENTER" ellipsisString="" layoutX="53.0" layoutY="377.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="86.0" prefWidth="611.0" text="Here you can see the final observed state of each qubit. Red denotes a value of 1, Blue denotes a value of 0." textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
       <HBox layoutX="116.0" layoutY="464.0" prefHeight="56.0" prefWidth="467.0" spacing="100.0">
          <children>
             <Circle fx:id="qbit1" fill="DODGERBLUE" radius="19.0" stroke="BLACK" strokeType="INSIDE" />
@@ -124,7 +124,7 @@
                </children></Pane>
          </children>
       </GridPane>
-      <Label fx:id="stateVectorMessage" layoutX="186.0" layoutY="23.0" text="State Vector:" wrapText="true" />
-      <Button fx:id="clear" layoutX="374.0" layoutY="329.0" mnemonicParsing="false" onAction="#handleClearAction" prefHeight="25.0" prefWidth="83.0" text="Clear Circuit" />
+      <Label fx:id="stateVectorMessage" layoutX="186.0" layoutY="23.0" wrapText="true" />
+      <Button fx:id="clear" layoutX="374.0" layoutY="329.0" mnemonicParsing="false" onAction="#handleClearAction" prefHeight="25.0" prefWidth="83.0" text="Clear" />
     </children>
 </AnchorPane>

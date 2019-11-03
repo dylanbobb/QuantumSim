@@ -183,6 +183,11 @@ public class FXMLDocumentController implements Initializable {
         line4Operation2.setOpacity(0.1);
         line4Operation3.setFill(Paint.valueOf("blue"));
         line4Operation3.setOpacity(0.1);
+
+        qbit1.setFill(Paint.valueOf("dodgerblue"));
+        qbit2.setFill(Paint.valueOf("dodgerblue"));
+        qbit3.setFill(Paint.valueOf("dodgerblue"));
+        qbit4.setFill(Paint.valueOf("dodgerblue"));
     }
 
     @FXML
@@ -228,57 +233,97 @@ public class FXMLDocumentController implements Initializable {
             line4_ops.add("i");
             line4_ops.add("i");
         }
-        
-        for(int i = 0; i < 3; i++)
-        {
-            if(line1_ops.get(i).equalsIgnoreCase("h"))
-            {
+
+        for (int i = 0; i < 3; i++) {
+            if (line1_ops.get(i).equalsIgnoreCase("h")) {
                 int[] selection = {0};
                 state.h(selection);
             }
-            if(line2_ops.get(i).equalsIgnoreCase("h"))
-            {
+            if (line2_ops.get(i).equalsIgnoreCase("h")) {
                 int[] selection = {1};
                 state.h(selection);
             }
-            if(line3_ops.get(i).equalsIgnoreCase("h"))
-            {
+            if (line3_ops.get(i).equalsIgnoreCase("h")) {
                 int[] selection = {2};
                 state.h(selection);
             }
-            if(line4_ops.get(i).equalsIgnoreCase("h"))
-            {
+            if (line4_ops.get(i).equalsIgnoreCase("h")) {
                 int[] selection = {3};
                 state.h(selection);
             }
-            if(line1_ops.get(i).equalsIgnoreCase("cnot"))
-            {
+            if (line1_ops.get(i).equalsIgnoreCase("cnot")) {
                 state.cNot(0, 1);
             }
-            if(line2_ops.get(i).equalsIgnoreCase("cnot"))
-            {
-                state.cNot(1,2);
+            if (line2_ops.get(i).equalsIgnoreCase("cnot")) {
+                state.cNot(1, 2);
             }
-            if(line3_ops.get(i).equalsIgnoreCase("cnot"))
-            {
-                state.cNot(2,3);
+            if (line3_ops.get(i).equalsIgnoreCase("cnot")) {
+                state.cNot(2, 3);
             }
-            if(line1_ops.get(i).equalsIgnoreCase("swap"))
-            {
+            if (line1_ops.get(i).equalsIgnoreCase("swap")) {
                 state.swap(0, 1);
             }
-            if(line2_ops.get(i).equalsIgnoreCase("swap"))
-            {
-                state.swap(1,2);
+            if (line2_ops.get(i).equalsIgnoreCase("swap")) {
+                state.swap(1, 2);
             }
-            if(line3_ops.get(i).equalsIgnoreCase("swap"))
+            if (line3_ops.get(i).equalsIgnoreCase("swap")) {
+                state.swap(2, 3);
+            }
+            if(line1_ops.get(i).equalsIgnoreCase("m"))
             {
-                state.swap(2,3);
+                state.collapse(rand, 0);
+            }
+            if(line2_ops.get(i).equalsIgnoreCase("m"))
+            {
+                state.collapse(rand, 1);
+            }
+            if(line3_ops.get(i).equalsIgnoreCase("m"))
+            {
+                state.collapse(rand, 2);
+            }
+            if(line4_ops.get(i).equalsIgnoreCase("m"))
+            {
+                state.collapse(rand, 3);
             }
         }
 
         System.out.println(Arrays.toString(state.getState()));
 
+        state.collapse(rand);
+        System.out.println(Arrays.toString(state.getState()));
+        qbit1.setFill(Paint.valueOf("dodgerblue"));
+        qbit2.setFill(Paint.valueOf("dodgerblue"));
+        qbit3.setFill(Paint.valueOf("dodgerblue"));
+        qbit4.setFill(Paint.valueOf("dodgerblue"));
+
+        for (int i = 8; i < 16; i++) {
+            if (state.getState()[i] >= 1) {
+                qbit1.setFill(Paint.valueOf("red"));
+            }
+        }
+
+        for (int i = 4; i <= 7; i++) {
+            if (state.getState()[i] >= 1) {
+                qbit2.setFill(Paint.valueOf("red"));
+            }
+        }
+
+        for (int i = 12; i <= 15; i++) {
+            if (state.getState()[i] >= 1) {
+                qbit2.setFill(Paint.valueOf("red"));
+            }
+        }
+
+        if (state.getState()[2] >= 1 || state.getState()[3] >= 1 || state.getState()[6] >= 1 || state.getState()[7] >= 1 || state.getState()[10] >= 1
+                || state.getState()[11] >= 1 || state.getState()[14] >= 1 || state.getState()[15] >= 1) {
+            qbit3.setFill(Paint.valueOf("red"));
+        }
+
+        for (int i = 0; i < 16; i++) {
+            if ((i % 2 == 1) && state.getState()[i] >= 1) {
+                qbit4.setFill(Paint.valueOf("red"));
+            }
+        }
     }
 
     public void addToPane(Node node) {
