@@ -47,8 +47,6 @@ public class FXMLDocumentController implements Initializable {
     private ArrayList<String> line2_ops = new ArrayList(3);
     private ArrayList<String> line3_ops = new ArrayList(3);
     private ArrayList<String> line4_ops = new ArrayList(3);
-    
-    
 
     // Shapes
     @FXML
@@ -150,35 +148,35 @@ public class FXMLDocumentController implements Initializable {
 //    private Group line2Area;
 //    private Group line3Area;
 //    private Group line4Area;
-    
+
     @FXML
-    public void handleClearAction(ActionEvent event){
+    public void handleClearAction(ActionEvent event) {
         line1_ops = new ArrayList(3);
         line2_ops = new ArrayList(3);
         line3_ops = new ArrayList(3);
         line4_ops = new ArrayList(3);
-        
+
         line1Operation1.setFill(Paint.valueOf("blue"));
         line1Operation1.setOpacity(0.1);
         line1Operation2.setFill(Paint.valueOf("blue"));
         line1Operation2.setOpacity(0.1);
         line1Operation3.setFill(Paint.valueOf("blue"));
         line1Operation3.setOpacity(0.1);
-        
+
         line2Operation1.setFill(Paint.valueOf("blue"));
         line2Operation1.setOpacity(0.1);
         line2Operation2.setFill(Paint.valueOf("blue"));
         line2Operation2.setOpacity(0.1);
         line2Operation3.setFill(Paint.valueOf("blue"));
         line2Operation3.setOpacity(0.1);
-        
+
         line3Operation1.setFill(Paint.valueOf("blue"));
         line3Operation1.setOpacity(0.1);
         line3Operation2.setFill(Paint.valueOf("blue"));
         line3Operation2.setOpacity(0.1);
         line3Operation3.setFill(Paint.valueOf("blue"));
         line3Operation3.setOpacity(0.1);
-        
+
         line4Operation1.setFill(Paint.valueOf("blue"));
         line4Operation1.setOpacity(0.1);
         line4Operation2.setFill(Paint.valueOf("blue"));
@@ -186,7 +184,7 @@ public class FXMLDocumentController implements Initializable {
         line4Operation3.setFill(Paint.valueOf("blue"));
         line4Operation3.setOpacity(0.1);
     }
-    
+
     @FXML
     private void handleRunAction(ActionEvent event) {
         // Calculate the size of the arrows for the circles
@@ -208,16 +206,79 @@ public class FXMLDocumentController implements Initializable {
         stateVector = Matrix.tensorVectors(stateVector, q3);
         stateVector = Matrix.tensorVectors(stateVector, q4);
         state = new State(stateVector);
-        
+
         // Reading which funtion is which
+        if (line1_ops.size() == 0) {
+            line1_ops.add("i");
+            line1_ops.add("i");
+            line1_ops.add("i");
+        }
+        if (line2_ops.size() == 0) {
+            line2_ops.add("i");
+            line2_ops.add("i");
+            line2_ops.add("i");
+        }
+        if (line3_ops.size() == 0) {
+            line3_ops.add("i");
+            line3_ops.add("i");
+            line3_ops.add("i");
+        }
+        if (line4_ops.size() == 0) {
+            line4_ops.add("i");
+            line4_ops.add("i");
+            line4_ops.add("i");
+        }
         
-        System.out.println(line1_ops);
-        System.out.println(line2_ops);
-        System.out.println(line3_ops);
-        System.out.println(line4_ops);
-        
+        for(int i = 0; i < 3; i++)
+        {
+            if(line1_ops.get(i).equalsIgnoreCase("h"))
+            {
+                int[] selection = {0};
+                state.h(selection);
+            }
+            if(line2_ops.get(i).equalsIgnoreCase("h"))
+            {
+                int[] selection = {1};
+                state.h(selection);
+            }
+            if(line3_ops.get(i).equalsIgnoreCase("h"))
+            {
+                int[] selection = {2};
+                state.h(selection);
+            }
+            if(line4_ops.get(i).equalsIgnoreCase("h"))
+            {
+                int[] selection = {3};
+                state.h(selection);
+            }
+            if(line1_ops.get(i).equalsIgnoreCase("cnot"))
+            {
+                state.cNot(0, 1);
+            }
+            if(line2_ops.get(i).equalsIgnoreCase("cnot"))
+            {
+                state.cNot(1,2);
+            }
+            if(line3_ops.get(i).equalsIgnoreCase("cnot"))
+            {
+                state.cNot(2,3);
+            }
+            if(line1_ops.get(i).equalsIgnoreCase("swap"))
+            {
+                state.swap(0, 1);
+            }
+            if(line2_ops.get(i).equalsIgnoreCase("swap"))
+            {
+                state.swap(1,2);
+            }
+            if(line3_ops.get(i).equalsIgnoreCase("swap"))
+            {
+                state.swap(2,3);
+            }
+        }
+
         System.out.println(Arrays.toString(state.getState()));
-        
+
     }
 
     public void addToPane(Node node) {
@@ -452,15 +513,15 @@ public class FXMLDocumentController implements Initializable {
 
                 Dragboard db = event.getDragboard();
                 boolean success = false;
-                if(line1_ops.isEmpty()){
+                if (line1_ops.isEmpty()) {
                     line1_ops.add("i");
                     line1_ops.add("i");
                 }
                 if (db.hasImage()) {
                     line1Operation1.setFill(new ImagePattern(db.getImage()));
                     line1Operation1.setOpacity(1);
-                    
-                    line1_ops.add(0,current_op);
+
+                    line1_ops.add(0, current_op);
                     success = true;
                 }
 
@@ -475,15 +536,15 @@ public class FXMLDocumentController implements Initializable {
 
                 Dragboard db = event.getDragboard();
                 boolean success = false;
-                if(line1_ops.isEmpty()){
+                if (line1_ops.isEmpty()) {
                     line1_ops.add("i");
                     line1_ops.add("i");
                 }
                 if (db.hasImage()) {
                     line1Operation2.setFill(new ImagePattern(db.getImage()));
                     line1Operation2.setOpacity(1);
-                    
-                    line1_ops.add(1,current_op);
+
+                    line1_ops.add(1, current_op);
                     success = true;
                 }
 
@@ -498,15 +559,15 @@ public class FXMLDocumentController implements Initializable {
 
                 Dragboard db = event.getDragboard();
                 boolean success = false;
-                if(line1_ops.isEmpty()){
+                if (line1_ops.isEmpty()) {
                     line1_ops.add("i");
                     line1_ops.add("i");
                 }
                 if (db.hasImage()) {
                     line1Operation3.setFill(new ImagePattern(db.getImage()));
                     line1Operation3.setOpacity(1);
-                    
-                    line1_ops.add(2,current_op);
+
+                    line1_ops.add(2, current_op);
                     success = true;
                 }
 
@@ -521,15 +582,15 @@ public class FXMLDocumentController implements Initializable {
 
                 Dragboard db = event.getDragboard();
                 boolean success = false;
-                if(line2_ops.isEmpty()){
+                if (line2_ops.isEmpty()) {
                     line2_ops.add("i");
                     line2_ops.add("i");
                 }
                 if (db.hasImage()) {
                     line2Operation1.setFill(new ImagePattern(db.getImage()));
                     line2Operation1.setOpacity(1);
-                    
-                    line2_ops.add(0,current_op);
+
+                    line2_ops.add(0, current_op);
                     success = true;
                 }
 
@@ -544,15 +605,15 @@ public class FXMLDocumentController implements Initializable {
 
                 Dragboard db = event.getDragboard();
                 boolean success = false;
-               if(line2_ops.isEmpty()){
+                if (line2_ops.isEmpty()) {
                     line2_ops.add("i");
                     line2_ops.add("i");
                 }
                 if (db.hasImage()) {
                     line2Operation2.setFill(new ImagePattern(db.getImage()));
                     line2Operation2.setOpacity(1);
-                    
-                    line2_ops.add(1,current_op);
+
+                    line2_ops.add(1, current_op);
                     success = true;
                 }
 
@@ -567,15 +628,15 @@ public class FXMLDocumentController implements Initializable {
 
                 Dragboard db = event.getDragboard();
                 boolean success = false;
-                if(line2_ops.isEmpty()){
+                if (line2_ops.isEmpty()) {
                     line2_ops.add("i");
                     line2_ops.add("i");
                 }
                 if (db.hasImage()) {
                     line2Operation3.setFill(new ImagePattern(db.getImage()));
                     line2Operation3.setOpacity(1);
-                    
-                    line2_ops.add(2,current_op);
+
+                    line2_ops.add(2, current_op);
                     success = true;
                 }
 
@@ -590,15 +651,15 @@ public class FXMLDocumentController implements Initializable {
 
                 Dragboard db = event.getDragboard();
                 boolean success = false;
-                if(line3_ops.isEmpty()){
+                if (line3_ops.isEmpty()) {
                     line3_ops.add("i");
                     line3_ops.add("i");
                 }
                 if (db.hasImage()) {
                     line3Operation1.setFill(new ImagePattern(db.getImage()));
                     line3Operation1.setOpacity(1);
-                    
-                    line3_ops.add(0,current_op);
+
+                    line3_ops.add(0, current_op);
                     success = true;
                 }
 
@@ -613,15 +674,15 @@ public class FXMLDocumentController implements Initializable {
 
                 Dragboard db = event.getDragboard();
                 boolean success = false;
-                if(line3_ops.isEmpty()){
+                if (line3_ops.isEmpty()) {
                     line3_ops.add("i");
                     line3_ops.add("i");
                 }
                 if (db.hasImage()) {
                     line3Operation2.setFill(new ImagePattern(db.getImage()));
                     line3Operation2.setOpacity(1);
-                   
-                    line3_ops.add(1,current_op);
+
+                    line3_ops.add(1, current_op);
                     success = true;
                 }
 
@@ -636,15 +697,15 @@ public class FXMLDocumentController implements Initializable {
 
                 Dragboard db = event.getDragboard();
                 boolean success = false;
-                if(line3_ops.isEmpty()){
+                if (line3_ops.isEmpty()) {
                     line3_ops.add("i");
                     line3_ops.add("i");
                 }
                 if (db.hasImage()) {
                     line3Operation3.setFill(new ImagePattern(db.getImage()));
                     line3Operation3.setOpacity(1);
-                    
-                    line3_ops.add(2,current_op);
+
+                    line3_ops.add(2, current_op);
                     success = true;
                 }
 
@@ -659,15 +720,15 @@ public class FXMLDocumentController implements Initializable {
 
                 Dragboard db = event.getDragboard();
                 boolean success = false;
-                if(line4_ops.isEmpty()){
+                if (line4_ops.isEmpty()) {
                     line4_ops.add("i");
                     line4_ops.add("i");
                 }
                 if (db.hasImage() && !db.getImage().equals(swap_image) && !db.getImage().equals(cnot_image)) {
                     line4Operation1.setFill(new ImagePattern(db.getImage()));
                     line4Operation1.setOpacity(1);
-                    
-                    line4_ops.add(0,current_op);
+
+                    line4_ops.add(0, current_op);
                     success = true;
                 }
 
@@ -682,15 +743,15 @@ public class FXMLDocumentController implements Initializable {
 
                 Dragboard db = event.getDragboard();
                 boolean success = false;
-                if(line4_ops.isEmpty()){
+                if (line4_ops.isEmpty()) {
                     line4_ops.add("i");
                     line4_ops.add("i");
                 }
                 if (db.hasImage() && !db.getImage().equals(swap_image) && !db.getImage().equals(cnot_image)) {
                     line4Operation2.setFill(new ImagePattern(db.getImage()));
                     line4Operation2.setOpacity(1);
-                   
-                    line4_ops.add(1,current_op);
+
+                    line4_ops.add(1, current_op);
                     success = true;
                 }
 
@@ -705,16 +766,16 @@ public class FXMLDocumentController implements Initializable {
 
                 Dragboard db = event.getDragboard();
                 boolean success = false;
-                
-                if(line4_ops.isEmpty()){
+
+                if (line4_ops.isEmpty()) {
                     line4_ops.add("i");
                     line4_ops.add("i");
                 }
                 if (db.hasImage()) {
                     line4Operation3.setFill(new ImagePattern(db.getImage()));
                     line4Operation3.setOpacity(1);
-                    
-                    line4_ops.add(2,current_op);
+
+                    line4_ops.add(2, current_op);
                     success = true;
                 }
 
