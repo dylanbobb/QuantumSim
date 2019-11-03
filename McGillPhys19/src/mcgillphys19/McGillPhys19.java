@@ -23,6 +23,8 @@ public class McGillPhys19 extends Application {
         
         Scene scene = new Scene(root);
         stage.setTitle("QuBits");
+        stage.minWidthProperty().bind(scene.widthProperty());
+        stage.minHeightProperty().bind(scene.heightProperty());
         
         stage.setScene(scene);
         stage.show();
