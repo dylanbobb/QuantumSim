@@ -55,7 +55,17 @@ public class Matrix {
     }
     
     public static double [] tensorVectors(double [] a, double [] b) {
-        return null;
+        int aLen = a.length;
+        int bLen = b.length;
+        
+        int cLen = aLen * bLen;
+        double[] C = new double[cLen];
+        
+        for (int i = 0; i < cLen; i ++) {
+            C[i] = a[i / bLen] * b[i % bLen];
+        }
+        
+        return C;
     }
     
     public static double [][] tensorMatrix(double [][] a, double [][] b) {
