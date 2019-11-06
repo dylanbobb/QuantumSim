@@ -1,7 +1,13 @@
 # QuantumSim
 
+## Contributors
+Dylan Bobb - dylanbobb
+Jose Fernandez - joselegenda
+Jorge Marcano - JorgeMarcano
+Mohamed Ben Mekki - mbm64
 ## Inspiration
-Inspired by the textbook "Quantum Computing For Computer Scientists by Noson S. Yanofsky & Mirco A. Mannucci 
+Inspired by the textbook "Quantum Computing For Computer Scientists by Noson S. Yanofsky & Mirco A. Mannucci
+This project was built for the 2019 McGill physics hackathon and won the Wolfram Award.
 
 ## What it does
 This program can build quantum circuits made by the user through an interactive GUI.
