@@ -1,9 +1,9 @@
 # QuantumSim
 
 ## Contributors
-Dylan Bobb - dylanbobb
-Jose Fernandez - joselegenda
-Jorge Marcano - JorgeMarcano
+Dylan Bobb - dylanbobb<br />
+Jose Fernandez - joselegenda<br />
+Jorge Marcano - JorgeMarcano<br />
 Mohamed Ben Mekki - mbm64
 ## Inspiration
 Inspired by the textbook "Quantum Computing For Computer Scientists by Noson S. Yanofsky & Mirco A. Mannucci
