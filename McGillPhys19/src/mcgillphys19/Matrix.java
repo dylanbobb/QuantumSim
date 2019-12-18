@@ -1,10 +1,19 @@
 package mcgillphys19;
 
 /**
- *
- * @author aweso
+ * Matrix math class
+ * 
+ * @author Drop Table Team
  */
 public class Matrix {
+
+    /**
+     * Performs a matrix-vector multiplication (linear transformation)
+     * 
+     * @param A Transformation Matrix
+     * @param v Vector
+     * @return Returns transformed vector
+     */
     public static double[] transform(double [][] A, double [] v) {
         int aColumns = A[0].length;
         int bRows = v.length;
@@ -22,6 +31,13 @@ public class Matrix {
         return C;
     }
     
+    /**
+     * Performs a dot product of two vectors
+     * 
+     * @param v1 First vector
+     * @param v2 Second vector
+     * @return Returns the dot product of both vectors
+     */
     public static double dotProduct(double [] v1, double [] v2) {
         double total = 0;
         
@@ -31,6 +47,13 @@ public class Matrix {
         return total;
     }
     
+    /**
+     * Performs a matrix-matrix multiplication
+     * 
+     * @param A First matrix
+     * @param B Second matrix
+     * @return Returns the resultant matrix
+     */
     public static double[][] times(double[][] A, double[][] B) {
         int aRows = A.length;
         int aColumns = A[0].length;
@@ -54,6 +77,13 @@ public class Matrix {
         return C;
     }
     
+    /**
+     * Performs a tensor product between 2 vectors
+     * 
+     * @param a first vector
+     * @param b second vector
+     * @return Returns resultant vector
+     */
     public static double [] tensorVectors(double [] a, double [] b) {
         int aLen = a.length;
         int bLen = b.length;
@@ -68,6 +98,13 @@ public class Matrix {
         return C;
     }
     
+    /**
+     * Performs a tensor product between 2 matrices
+     * 
+     * @param a First matrix
+     * @param b Second matrix
+     * @return Returns the resultant matrix
+     */
     public static double [][] tensorMatrix(double [][] a, double [][] b) {
         int aRows = a.length;
         int bColumns = b[0].length;
@@ -86,6 +123,13 @@ public class Matrix {
         return C;
     }
     
+    /**
+     * Performs a scalar-vector multiplication
+     * 
+     * @param k scalar value
+     * @param v vector
+     * @return Returns the resultant vector
+     */
     public static double[] scalarVector(double k, double [] v) {
         for (int i = 0; i < v.length; i++) {
             v[i] = k * v[i];

@@ -3,26 +3,58 @@ package mcgillphys19;
 import java.util.Arrays;
 import java.util.Random;
 
+/**
+ * Master class for everything about a system of qubits
+ * 
+ * @author Drop Table Team
+ */
 public class State {
 
+    /**
+     * Current state
+     */
     protected double[] state;
+
+    /**
+     * Number of qubits in the state
+     */
     protected int nbQubits;
 
+    /**
+     * Creates empty state based on qubit count
+     * 
+     * @param nbQubits Number of qubits in the system
+     */
     public State(int nbQubits) {
         this.state = new double[(int) Math.pow(2, nbQubits)];
         this.state[0] = 1;
         this.nbQubits = nbQubits;
     }
 
+    /**
+     * Creates a state from a pre-made list
+     * 
+     * @param state pre-made state
+     */
     public State(double[] state) {
         this.state = state;
         this.nbQubits = (int) (Math.log(state.length) / Math.log(2));
     }
 
+    /**
+     * Getter for state
+     * 
+     * @return Returns the current state
+     */
     public double[] getState() {
         return this.state;
     }
 
+    /**
+     * Performs an H gate on a selection of qubits
+     * 
+     * @param selection Array of selected qubits to perform the gate
+     */
     public void h(int[] selection) {
         int currSelectionIndex = 0;
         int selectionLen = selection.length;
@@ -47,6 +79,11 @@ public class State {
         this.state = Matrix.transform(operationChain, this.getState());
     }
     
+    /**
+     * Performs the X gate on a selection of qubits
+     * 
+     * @param selection Array of selected qubits to perform the gate
+     */
     public void x(int[] selection) {
         int currSelectionIndex = 0;
         int selectionLen = selection.length;
@@ -71,6 +108,12 @@ public class State {
         this.state = Matrix.transform(operationChain, this.getState());
     }
 
+    /**
+     * Performs a swap between 2 qubits
+     * 
+     * @param a first qubit to swap
+     * @param b second qubit to swap
+     */
     public void swap(int a, int b) {
         if (a > nbQubits || b > nbQubits)
             return;
@@ -97,6 +140,12 @@ public class State {
         }
     }
 
+    /**
+     * Performs a C-NOT between 2 qubits
+     * 
+     * @param a conditional bit
+     * @param b target bit
+     */
     public void cNot(int a, int b) {
         /*
         b depends on a
@@ -119,6 +168,11 @@ public class State {
         this.state = Matrix.transform(cNotMatrix, this.getState());
     }
 
+    /**
+     * Collapses the entire system into a final state
+     * 
+     * @param rand a Random object
+     */
     public void collapse(Random rand) {
         double result = rand.nextDouble();
 
@@ -137,6 +191,11 @@ public class State {
         }
     }
     
+    /**
+     * Performs a black-box function on qubits 0 and 1
+     * 
+     * @param id Id of the black-box function
+     */
     public void U(int id) {
         /*
         ID
@@ -160,6 +219,12 @@ public class State {
         }
     }
     
+    /**
+     * Collapses a specific qubit in the system while leaving the others in superposition
+     * 
+     * @param rand a Random object
+     * @param index qubit to collapse
+     */
     public void collapse(Random rand, int index) {
         double result = rand.nextDouble();
         double totalProb = 0;
@@ -194,15 +259,36 @@ public class State {
         state = Matrix.scalarVector(k, state);
     }
     
+    /**
+     * First instance of the function F (used in shor's)
+     * 
+     * @param a base number
+     * @param N Modulus term
+     * @return Returns 1
+     */
     public int f0(int a, int N) {
         return 1;
     }
     
+    /**
+     * Next instance of the function F (used in shor's)
+     * 
+     * @param a base number
+     * @param N Modulus term
+     * @param prev previous instance
+     * @return Returns current instance of the function
+     */
     public int nextF(int a, int N, int prev) {
         int returnVal = (prev * a) % N;
         return returnVal;
     }
     
+    /**
+     * Creates and performs the F function to the system (used in shor's)
+     * @param a base number
+     * @param N Modulus term
+     * @param q qubit number
+     */
     public void qF(int a, int N, int q) {
         double[][] transformation = new double[state.length][state.length];
         int Q = (int) Math.pow(2, q);
@@ -234,12 +320,34 @@ public class State {
         //state = Matrix.transform(transformation, state);
     }
 
+    /**
+     * Matrix for 1 qubit H gate
+     */
     public final double[][] H = {{1 / Math.sqrt(2), 1 / Math.sqrt(2)}, {1 / Math.sqrt(2), -1 / Math.sqrt(2)}};
+
+    /**
+     * Matrix for 1 qubit I gate
+     */
     public final double[][] I = {{1, 0}, {0, 1}};
+
+    /**
+     * Matrix for 2 qubit S gate
+     */
     public final double[][] S = {{1, 0, 0, 0}, {0, 0, 1, 0}, {0, 1, 0, 0}, {0, 0, 0, 1}};
+
+    /**
+     * Matrix for 1 qubit X gate
+     */
     public final double[][] X = {{0, 1}, {1, 0}};
     
+    /**
+     * Matrix for 1 qubit M0 gate
+     */
     public final double[][] M0 = {{1, 0}, {0, 0}};
+
+    /**
+     * Matrix for 1 qubit M1 gate
+     */
     public final double[][] M1 = {{0, 0}, {0, 1}};
     //public final double[][] CNOT = {{1, 0, 0, 0}, {0, 1, 0, 0}, {0, 0, 0, 1}, {0, 0, 1, 0}};
 

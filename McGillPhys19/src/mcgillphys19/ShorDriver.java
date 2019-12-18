@@ -4,17 +4,24 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
- *
- * @author aweso
+ * Main class for Shor's algorithm
+ * 
+ * @author Drop Table Team
  */
 public class ShorDriver {
+
+    /**
+     * Runs the shor's algorithm on an inputed number
+     * 
+     * @param args command line arguments, unused
+     */
     public static void main(String[] args) {
         Random rand = new Random();
         
         Scanner scanner = new Scanner(System.in);
         int N = 37;
         
-        while (N > 36 || N < 0) {
+        while (N > 32 || N < 0) {
             System.out.print("Enter a product of 2 primes smaller than 32 : N = ");
             N = scanner.nextInt();
         }
@@ -104,6 +111,13 @@ public class ShorDriver {
         }
     }
     
+    /**
+     * Finds the greates common denominator of 2 numbers
+     * 
+     * @param number1
+     * @param number2
+     * @return 
+     */
     private static int findGCD(int number1, int number2) {
         //base case
         if(number2 == 0){
