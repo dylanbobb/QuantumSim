@@ -15,10 +15,10 @@ public class McGillPhys19 extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/mcgillphys19/FXMLDocument.fxml"));
         
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("label.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/mcgillphys19/label.css").toExternalForm());
         stage.setTitle("QuBits");
         stage.minWidthProperty().bind(scene.widthProperty());
         stage.minHeightProperty().bind(scene.heightProperty());

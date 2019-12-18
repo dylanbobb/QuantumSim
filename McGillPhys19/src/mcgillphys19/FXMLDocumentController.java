@@ -692,10 +692,10 @@ public class FXMLDocumentController implements Initializable {
         p41.setStyle("-fx-background-color: rgba(4,249,207,0.3)");
 
         // Images
-        Image hadamard_image = new Image(fileURL("./assets/hadamard_image.jpg"));
-        Image swap_image = new Image(fileURL("./assets/swap_image.jpg"));
-        Image cnot_image = new Image(fileURL("./assets/cnot_image.jpg"));
-        Image measurer_image = new Image(fileURL("./assets/measurer_image.jpg"));
+        Image hadamard_image = new Image(getClass().getResource("/mcgillphys19/assets/hadamard_image.jpg").toString());
+        Image swap_image = new Image(getClass().getResource("/mcgillphys19/assets/swap_image.jpg").toString());
+        Image cnot_image = new Image(getClass().getResource("/mcgillphys19/assets/cnot_image.jpg").toString());
+        Image measurer_image = new Image(getClass().getResource("/mcgillphys19/assets/measurer_image.jpg").toString());
 
         // Shapes
         hadamard.setFill(new ImagePattern(hadamard_image));

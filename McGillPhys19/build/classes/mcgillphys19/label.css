@@ -1,0 +1,44 @@
+.label_style{
+    -fx-font-family: 'serif';
+    -fx-font-style: italic;
+    -fx-font-size: 16px;
+    -fx-text-fill: white;
+    /*-fx-background-color: rgba(0,100,255,0.1);*/
+    /*-fx-stroke-left: 4px solid blue;*/
+/*    -fx-border-color: blue;
+    -fx-border-left-style: solid;
+    -fx-border-width: 5px;*/
+}
+
+.q_label_style{
+    -fx-font-family: 'serif';
+    -fx-font-size: 16px;
+    -fx-text-fill: white;
+}
+
+.pane{
+    -fx-background-color: rgb(50,50,50);
+}
+
+.qubit_style{
+    -fx-fill: purple;
+    -fx-border-color: white;
+    -fx-effect:innershadow(gaussian, black, 12.0, 0.7, 0, 0);
+}
+
+.textfield_style{
+    -fx-text-fill: orange;
+    -fx-border-color: white;
+    -fx-border-radius: 5px;
+    /*-fx-effect: dropshadow(gaussian, pink, 12.0, 0.7, 0, 0);*/
+    -fx-background-color: rgba(0,0,256,0.2)
+}
+
+.button_style{
+    -fx-background-color: darkorange;
+    -fx-effect: dropshadow(gaussian, orange, 12.0, 0.5, 0, 0);
+}
+
+.pane_style{
+    -fx-background-color: rgba(4,249,107,0.3);
+}
