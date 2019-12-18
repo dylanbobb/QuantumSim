@@ -1,2 +1,3 @@
 @ECHO OFF
-java -cp McGillPhys19.jar mcgillphys19.ShorDriver
+java -d64 -Xmx12G -cp McGillPhys19.jar mcgillphys19.ShorDriver
+pause
