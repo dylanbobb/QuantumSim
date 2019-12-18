@@ -297,6 +297,9 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void stepButton(ActionEvent event) {
+        if (input1.getText().isEmpty() || input2.getText().isEmpty() ||
+                input3.getText().isEmpty() || input4.getText().isEmpty())
+            return;
         System.out.println(currCol);
         if (currCol == 0) {
             p11.setStyle("-fx-background-color: rgba(4,249,207,0.0)");
@@ -482,6 +485,9 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void handleRunAction(ActionEvent event) {
+        if (input1.getText().isEmpty() || input2.getText().isEmpty() ||
+                input3.getText().isEmpty() || input4.getText().isEmpty())
+            return;
         // Calculate the size of the arrows for the circles
         currCol = 0;
         String[] q1s = input1.getText().split(",");
